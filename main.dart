@@ -53,13 +53,13 @@ main() {
   // Saída esperada 2: No momento não possuímos o produto Colônia Floratta Flores Secretas 75ml em estoque.
 
   try {
-    produtoA.realizarVenda();
+    produtoA.realizarVenda(quantidade: 3);
   } catch (e) {
     print(e.toString());
   }
 
   try {
-    produtoB.realizarVenda();
+    produtoB.realizarVenda(quantidade: 0);
   } catch (e) {
     print(e.toString());
   }
