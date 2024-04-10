@@ -188,7 +188,7 @@ main() {
   clienteX.comprarProduto(produtoA, revendedorA);
   clienteX.comprarProduto(produtoB, revendedorC);
   //teste do método calcularTotalGasto
-  
+  print(clienteX.calcularTotalGasto());
   clienteX.calcularMediaValorProdutosComprados();
 
 //cliente sem dinheiro
