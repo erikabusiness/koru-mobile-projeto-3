@@ -41,14 +41,10 @@ main() {
   Produto produtoA = Produto(
       nome: "Colônia Floratta Flores Secretas 75ml",
       valor: 104.90,
-      qtdEmEstoque: 3
-  );
+      qtdEmEstoque: 3);
 
-  Produto produtoB = Produto(
-      nome: "Colônia Floratta Red 75ml",
-      valor: 75.90,
-      qtdEmEstoque: 0
-  );
+  Produto produtoB =
+      Produto(nome: "Colônia Floratta Red 75ml", valor: 75.90, qtdEmEstoque: 0);
 
   /* Testes da classe Produto */
 
@@ -121,11 +117,11 @@ main() {
       cpf: '123456',
       dataDeNascimento: DateTime.parse('1991-12-21'),
       matricula: '123456789',
-      genero: Genero.Masculino
-  );
+      genero: Genero.Masculino);
 
   print('Matrícula do revendedor: ${revendedorA.matricula}');
-  print('Porcentagem de lucro: ${(revendedorA.porcentagemLucro*100).toStringAsFixed(0)}%');
+  print(
+      'Porcentagem de lucro: ${(revendedorA.porcentagemLucro * 100).toStringAsFixed(0)}%');
 
   Revendedor revendedorB = Revendedor(
     nome: 'Ariel',
@@ -163,48 +159,45 @@ main() {
   /* Testes da classe Cliente */
 
   Cliente clienteComDinheiro = Cliente(
-    nome: 'Fran',
-    cpf: '01234567890',
-    dataDeNascimento: DateTime.parse('1999-10-01'),
-    dinheiro: 10,
-    genero: Genero.Feminino
-  );
+      nome: 'Fran',
+      cpf: '01234567890',
+      dataDeNascimento: DateTime.parse('1999-10-01'),
+      dinheiro: 10,
+      genero: Genero.Feminino);
 
   clienteComDinheiro.adicionarDinheiro(22.0);
   clienteComDinheiro.adicionarDinheiro(null);
 
   Cliente clienteSemDinheiro = Cliente(
-    nome: 'Kamila',
-    cpf: '1234578900',
-    dataDeNascimento: DateTime.parse('1997-11-15'),
-    genero: Genero.Feminino
-  );
+      nome: 'Kamila',
+      cpf: '1234578900',
+      dataDeNascimento: DateTime.parse('1997-11-15'),
+      genero: Genero.Feminino);
 
   clienteSemDinheiro.adicionarDinheiro(10.0);
 
   //Teste do método comprarProduto
   //cliente com dinheiro
   Cliente clienteX = Cliente(
-    nome: 'Ana',
-    cpf: '20202929',
-    dataDeNascimento: DateTime.parse('1996-18-06'),
-    dinheiro: 330.70,
-    genero: Genero.Feminino
-  );
+      nome: 'Ana',
+      cpf: '20202929',
+      dataDeNascimento: DateTime.parse('1996-18-06'),
+      dinheiro: 330.70,
+      genero: Genero.Feminino);
 
   clienteX.comprarProduto(produtoA, revendedorA);
   clienteX.comprarProduto(produtoB, revendedorC);
+  //teste do método calcularTotalGasto
+  
   clienteX.calcularMediaValorProdutosComprados();
 
 //cliente sem dinheiro
   Cliente clienteY = Cliente(
-    nome: 'João',
-    cpf: '20202929',
-    dataDeNascimento: DateTime.parse('2005-10-03'),
-    dinheiro: 2.50,
-    genero: Genero.Masculino
-  );
+      nome: 'João',
+      cpf: '20202929',
+      dataDeNascimento: DateTime.parse('2005-10-03'),
+      dinheiro: 2.50,
+      genero: Genero.Masculino);
 
   clienteY.comprarProduto(produtoB, revendedorA);
-
 }
