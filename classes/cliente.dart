@@ -1,6 +1,7 @@
 import 'pessoa.dart';
 import 'produto.dart';
 import 'revendedor.dart';
+import '../utils.dart';
 
 class Cliente extends Pessoa {
 
@@ -61,6 +62,10 @@ class Cliente extends Pessoa {
 
       print("O valor médio gasto em produtos pelo cliente $nome, é de R\$ $valorMedio");
     }
+  }
+
+  void verResumo(double valorTotalGasto, double valorMedioGasto){
+    print("O total gasto por ${nome} foi ${fixarDuasCasasDecimais(calcularTotalGasto())} reais e a média de valor dos produtos comprados é ${fixarDuasCasasDecimais(calcularMediaProdutosComprados())} reais.");
   }
 }
 
