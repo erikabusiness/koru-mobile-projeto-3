@@ -68,4 +68,17 @@ class Revendedor extends Pessoa {
 
     return lucro;
   }
+
+  double calcularMediaProdutosVendidos() {
+    if (produtosVendidos.isEmpty) {
+      return 0;
+    }
+
+    double totalValorProdutos = 0;
+    for (var produto in produtosVendidos) {
+      totalValorProdutos += produto.valor * produto.qtdVendida;
+    }
+    double media = totalValorProdutos / produtosVendidos.length;
+    return media;
+  }
 }

@@ -125,12 +125,14 @@ main() {
       cpf: '123456',
       dataDeNascimento: DateTime.parse('1991-12-21'),
       matricula: '123456789',
-      genero: Genero.Masculino);
+      genero: Genero.Masculino
+      );
 
   print('Matrícula do revendedor: ${revendedorA.matricula}');
   print(
       'Porcentagem de lucro: ${(revendedorA.porcentagemLucro * 100).toStringAsFixed(0)}%');
    print("Lucro do revendedor A: ${fixarDuasCasasDecimais(revendedorA.calcularLucro())}");
+   print("Média dos produtos vendidos: ${fixarDuasCasasDecimais(revendedorA.calcularMediaProdutosVendidos())}");
 
   Revendedor revendedorB = Revendedor(
     nome: 'Ariel',
