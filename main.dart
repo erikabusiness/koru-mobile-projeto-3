@@ -88,6 +88,7 @@ main() {
   print('Nome: ${pessoaA.nome}');
   print('CPF: ${pessoaA.cpf}');
   print('Genero: ${Genero.Feminino.name}');
+ pessoaA.termometroDoHumor(Humor.confiante);
 
   /* Testes da classe Pessoa */
 
