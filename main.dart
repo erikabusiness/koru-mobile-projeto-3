@@ -130,6 +130,7 @@ main() {
   print('Matrícula do revendedor: ${revendedorA.matricula}');
   print(
       'Porcentagem de lucro: ${(revendedorA.porcentagemLucro * 100).toStringAsFixed(0)}%');
+   print("Lucro do revendedor A: ${fixarDuasCasasDecimais(revendedorA.calcularLucro())}");
 
   Revendedor revendedorB = Revendedor(
     nome: 'Ariel',
