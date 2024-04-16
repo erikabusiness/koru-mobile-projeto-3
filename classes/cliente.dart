@@ -2,6 +2,7 @@ import 'pessoa.dart';
 import 'produto.dart';
 import 'revendedor.dart';
 import '../utils.dart';
+import 'brinde.dart';
 
 class Cliente extends Pessoa {
 
@@ -60,12 +61,27 @@ class Cliente extends Pessoa {
 
       valorMedio = valorTotalGasto / numeroDeProdutos;
 
-      print("O valor médio gasto em produtos pelo cliente $nome, é de R\$ $valorMedio");
+      print("O valor médio gasto em produtos pelo cliente $nome, é de R\$ ${fixarDuasCasasDecimais(valorMedio)}");
     }
   }
 
   void verResumo(double valorTotalGasto, double valorMedioGasto){
     print("O total gasto por ${nome} foi ${fixarDuasCasasDecimais(calcularTotalGasto())} reais e a média de valor dos produtos comprados é ${fixarDuasCasasDecimais(calcularMediaProdutosComprados())} reais.");
   }
+
+  void trocarPontosPorBrinde(Brinde brinde){
+    if(pontos >= brinde.pontosNecessarios){
+      try{
+        brinde.realizarTroca();
+        this.pontos -= brinde.pontosNecessarios;
+        brindes.add(brinde);
+      }catch(e){
+        print(e.toString());
+      }
+    }else{
+      print('$nome não possui pontos suficientes para trocar pelo brinde ${brinde.nome}.');
+    }
+  }
+
 }
 
