@@ -61,7 +61,7 @@ class Cliente extends Pessoa {
 
       valorMedio = valorTotalGasto / numeroDeProdutos;
 
-      print("O valor médio gasto em produtos pelo cliente $nome, é de R\$ ${fixarDuasCasasDecimais(valorMedio)}");
+      print("O valor médio gasto em produtos pelo cliente $nome, é de R\$ $valorMedio");
     }
   }
 
