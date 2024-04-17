@@ -79,7 +79,10 @@ class Cliente extends Pessoa {
     produtosComprados.sort((a, b) => a.nome.compareTo(b.nome));
   }
 
-}
+  void consultarTotalPontos() {
+    String _singularOuPlural = pontos == 1 ? "ponto" : "pontos";
+    print("Olá $nome, você possui $pontos $_singularOuPlural!");
+  }
 
   void verResumo(double valorTotalGasto, double valorMedioGasto){
     print("O total gasto por ${nome} foi ${fixarDuasCasasDecimais(calcularTotalGasto())} reais e a média de valor dos produtos comprados é ${fixarDuasCasasDecimais(calcularMediaProdutosComprados())} reais.");
