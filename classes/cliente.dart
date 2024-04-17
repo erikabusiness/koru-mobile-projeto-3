@@ -29,6 +29,7 @@ class Cliente extends Pessoa {
         revendedor.venderProduto(produto);
         dinheiro -= produto.valor;
         produtosComprados.add(produto);
+        pontos++;
       } catch (e) {
         print(e.toString());
       }
