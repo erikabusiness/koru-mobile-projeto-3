@@ -15,7 +15,7 @@ class Cliente extends Pessoa {
     required super.dataDeNascimento,
     required super.genero,
     this.dinheiro = 0.0,
-  }) :  brindes = [];
+  });
 
   //método falar
   @override
