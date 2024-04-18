@@ -1,7 +1,6 @@
 import 'enums.dart';
 import 'pessoa.dart';
 import 'produto.dart';
-import '../utils.dart';
 
 class Revendedor extends Pessoa {
   final String matricula;
@@ -59,8 +58,27 @@ class Revendedor extends Pessoa {
     }
   }
 
-  //método verResumo
-  void verResumo(){
-    print("O total vendido por ${nome} foi ${fixarDuasCasasDecimais(calcularTotalVendido())} reais e a média aritmética de valor dos produtos vendidos é ${fixarDuasCasasDecimais(calcularMediaProdutosVendidos())} reais. O lucro recebido foi de ${fixarDuasCasasDecimais(calcularLucro())} reais.");
+  double calcularLucro() {
+    double totalVendas = 85.80;
+    produtosVendidos.forEach((produto) {
+      totalVendas += produto.valor * produto.qtdVendida;
+    });
+
+    double lucro = totalVendas * porcentagemLucro;
+
+    return lucro;
+  }
+
+  double calcularMediaProdutosVendidos() {
+    if (produtosVendidos.isEmpty) {
+      return 0;
+    }
+
+    double totalValorProdutos = 0;
+    for (var produto in produtosVendidos) {
+      totalValorProdutos += produto.valor * produto.qtdVendida;
+    }
+    double media = totalValorProdutos / produtosVendidos.length;
+    return media;
   }
 }

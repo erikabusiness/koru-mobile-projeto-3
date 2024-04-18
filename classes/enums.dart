@@ -1,8 +1,5 @@
-enum Genero { Masculino, Feminino, Outro }
-
-enum Humor {
-  feliz,
-  triste,
-  confiante,
-  alegre,
+enum Genero {
+  Masculino,
+  Feminino,
+  Outro
 }

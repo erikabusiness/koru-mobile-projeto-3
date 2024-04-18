@@ -31,21 +31,4 @@ class Pessoa {
   void falar(String fala) {
     print('$nome diz: $fala');
   }
-
-  void termometroDoHumor(Humor humor) {
-    switch (humor) {
-      case Humor.feliz:
-        print("Que bom que você está feliz hoje, $nome.");
-        break;
-      case Humor.alegre:
-        print("Que bom que você está alegre hoje, continue assim, $nome.");
-        break;
-      case Humor.confiante:
-        print("Isso ai, graças a sua confiança ninguém pode te parar $nome!");
-        break;
-      case Humor.triste:
-        print("Pare um pouco e respire, $nome.");
-        break;
-    }
-  }
 }
