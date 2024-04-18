@@ -7,6 +7,7 @@ class Cliente extends Pessoa {
   double dinheiro;
 
   List<Produto> produtosComprados = [];
+  List<String> brindes = [];
 
   Cliente({
     required super.nome,
@@ -14,7 +15,7 @@ class Cliente extends Pessoa {
     required super.dataDeNascimento,
     required super.genero,
     this.dinheiro = 0.0,
-  });
+  }) :  brindes = [];
 
   //método falar
   @override
@@ -72,7 +73,7 @@ class Cliente extends Pessoa {
     if (produtosComprados.isEmpty) {
       print("Cliente $nome não possui produtos comprados");
     } else {
-      ordenarProdutosComprados ();
+      ordenarProdutosComprados();
 
       print("Produtos comprados por $nome:");
       produtosComprados.forEach((produto) {
