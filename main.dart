@@ -199,6 +199,7 @@ main() {
   clienteX.comprarProduto(produtoA, revendedorA);
   clienteX.comprarProduto(produtoB, revendedorC);
   clienteX.calcularMediaValorProdutosComprados();
+  clienteX.verProdutosComprados();
 
 //cliente sem dinheiro
   Cliente clienteY = Cliente(
@@ -209,4 +210,5 @@ main() {
       genero: Genero.Masculino);
 
   clienteY.comprarProduto(produtoB, revendedorA);
+  clienteY.verProdutosComprados();
 }

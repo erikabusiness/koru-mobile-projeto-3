@@ -4,7 +4,6 @@ import 'revendedor.dart';
 import '../utils.dart';
 
 class Cliente extends Pessoa {
-
   double dinheiro;
 
   List<Produto> produtosComprados = [];
@@ -16,7 +15,6 @@ class Cliente extends Pessoa {
     required super.genero,
     this.dinheiro = 0.0,
   });
-
 
   //método falar
   @override
@@ -35,18 +33,19 @@ class Cliente extends Pessoa {
           '$nome não possui dinheiro suficiente para comprar o produto ${produto.nome}');
     }
   }
-  
-    void adicionarDinheiro(double? valor) {
+
+  void adicionarDinheiro(double? valor) {
     if (valor != null) {
       dinheiro += valor;
-      print("$nome adicionou $valor à sua carteira. Agora você tem $dinheiro em dinheiro.");
+      print(
+          "$nome adicionou $valor à sua carteira. Agora você tem $dinheiro em dinheiro.");
     } else {
       print("Nenhum valor adicionado à carteira");
     }
   }
 
   void calcularMediaValorProdutosComprados() {
-    if(produtosComprados.isEmpty) {
+    if (produtosComprados.isEmpty) {
       print("Cliente $nome não possui produtos comprados");
     } else {
       List<Produto> produtosComprados = this.produtosComprados;
@@ -60,12 +59,25 @@ class Cliente extends Pessoa {
 
       valorMedio = valorTotalGasto / numeroDeProdutos;
 
-      print("O valor médio gasto em produtos pelo cliente $nome, é de R\$ $valorMedio");
+      print(
+          "O valor médio gasto em produtos pelo cliente $nome, é de R\$ $valorMedio");
     }
   }
 
-  void verResumo(double valorTotalGasto, double valorMedioGasto){
-    print("O total gasto por ${nome} foi ${fixarDuasCasasDecimais(calcularTotalGasto())} reais e a média de valor dos produtos comprados é ${fixarDuasCasasDecimais(calcularMediaProdutosComprados())} reais.");
+  void verResumo(double valorTotalGasto, double valorMedioGasto) {
+    //print("O total gasto por ${nome} foi ${fixarDuasCasasDecimais(calcularTotalGasto())} reais e a média de valor dos produtos comprados é ${fixarDuasCasasDecimais(calcularMediaProdutosComprados())} reais.");
+  }
+
+  void verProdutosComprados() {
+    if (produtosComprados.isEmpty) {
+      print("Cliente $nome não possui produtos comprados");
+    } else {
+      ordenarProdutosComprados ();
+
+      print("Produtos comprados por $nome:");
+      produtosComprados.forEach((produto) {
+        print("${produto.nome} - ${produto.valor}");
+      });
+    }
   }
 }
-
