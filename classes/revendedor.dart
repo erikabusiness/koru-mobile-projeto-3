@@ -60,9 +60,7 @@ class Revendedor extends Pessoa {
 
   double calcularLucro() {
     double totalVendas = calcularTotalVendido();
-    produtosVendidos.forEach((produto) {
-      totalVendas += produto.valor * produto.qtdVendida;
-    });
+  
 
     double lucro = totalVendas * porcentagemLucro;
 
