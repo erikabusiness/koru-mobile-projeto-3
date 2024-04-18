@@ -1,5 +1,4 @@
 // Importações dos arquivos que serão utilizados
-import 'classes/brinde.dart';
 import 'classes/enums.dart';
 import 'classes/pessoa.dart';
 import 'classes/produto.dart';
@@ -89,7 +88,6 @@ main() {
   print('Nome: ${pessoaA.nome}');
   print('CPF: ${pessoaA.cpf}');
   print('Genero: ${Genero.Feminino.name}');
- pessoaA.termometroDoHumor(Humor.confiante);
 
   /* Testes da classe Pessoa */
 
@@ -157,9 +155,6 @@ main() {
   revendedorC.falar("Temos promoções!");
   pularLinha();
 
-  revendedorA.verResumo();
-  pularLinha();
-
   //teste método cliente falar
   Cliente clienteA = Cliente(
     nome: 'João',
@@ -203,8 +198,6 @@ main() {
 
   clienteX.comprarProduto(produtoA, revendedorA);
   clienteX.comprarProduto(produtoB, revendedorC);
-  //teste método calcularTotalGasto
-  print(clienteX.calcularTotalGasto());
   clienteX.calcularMediaValorProdutosComprados();
 
 //cliente sem dinheiro
@@ -216,19 +209,4 @@ main() {
       genero: Genero.Masculino);
 
   clienteY.comprarProduto(produtoB, revendedorA);
-  //teste método verBrindes
-  clienteY.verBrindes();
-
-  /* ------------------------------------------ */
-  /* Testes da classe Brinde */
-
-  Brinde brindeA = Brinde(
-      nome: 'Lápis Batom Instalip Vinho',
-      pontosNecessarios: 50,
-      qtdEmEstoque: 20);
-
-  brindeA.consultarPontosNecessarios();
 }
-
-
-
