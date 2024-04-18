@@ -72,7 +72,7 @@ class Cliente extends Pessoa {
     if (produtosComprados.isEmpty) {
       print("Cliente $nome não possui produtos comprados");
     } else {
-      ordenarProdutosComprados ()
+      ordenarProdutosComprados ();
 
       print("Produtos comprados por $nome:");
       produtosComprados.forEach((produto) {
