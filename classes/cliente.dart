@@ -25,13 +25,9 @@ class Cliente extends Pessoa {
   //metodo comprarProduto (retorno: void)
   void comprarProduto(Produto produto, Revendedor revendedor) {
     if (dinheiro >= produto.valor) {
-      try {
-        revendedor.venderProduto(produto);
-        dinheiro -= produto.valor;
-        produtosComprados.add(produto);
-      } catch (e) {
-        print(e.toString());
-      }
+      revendedor.venderProduto(produto);
+      dinheiro -= produto.valor;
+      produtosComprados.add(produto);
     } else {
       print(
           '$nome não possui dinheiro suficiente para comprar o produto ${produto.nome}');
@@ -48,47 +44,40 @@ class Cliente extends Pessoa {
     }
   }
 
-  double calcularTotalGasto() {
-    double totalGasto = 0.0;
-    if (produtosComprados.isEmpty) {
-      print("Cliente $nome não possui produtos comprados");
-    } else {
-      produtosComprados.forEach((produto) {
-        totalGasto += produto.valor;
-      });
-    }
-    return totalGasto;
-  }
-
   void calcularMediaValorProdutosComprados() {
     if (produtosComprados.isEmpty) {
       print("Cliente $nome não possui produtos comprados");
     } else {
       List<Produto> produtosComprados = this.produtosComprados;
+      double valorTotalGasto = 0.0;
       int numeroDeProdutos = produtosComprados.length;
       double valorMedio;
 
-      valorMedio = calcularTotalGasto() / numeroDeProdutos;
+      produtosComprados.forEach((produto) {
+        valorTotalGasto += produto.valor;
+      });
+
+      valorMedio = valorTotalGasto / numeroDeProdutos;
 
       print(
           "O valor médio gasto em produtos pelo cliente $nome, é de R\$ $valorMedio");
     }
   }
 
-  void ordenarProdutosComprados() {
-    produtosComprados.sort((a, b) => a.nome.compareTo(b.nome));
+  void verResumo(double valorTotalGasto, double valorMedioGasto) {
+    //print("O total gasto por ${nome} foi ${fixarDuasCasasDecimais(calcularTotalGasto())} reais e a média de valor dos produtos comprados é ${fixarDuasCasasDecimais(calcularMediaProdutosComprados())} reais.");
   }
-}
 
-void verResumo(double valorTotalGasto, double valorMedioGasto) {
-  print(
-      "O total gasto por ${nome} foi ${fixarDuasCasasDecimais(calcularTotalGasto())} reais e a média de valor dos produtos comprados é ${fixarDuasCasasDecimais(calcularMediaProdutosComprados())} reais.");
-}
+  void verProdutosComprados() {
+    if (produtosComprados.isEmpty) {
+      print("Cliente $nome não possui produtos comprados");
+    } else {
+      ordenarProdutosComprados ();
 
-void verBrindes() {
-  ordenarBrindes();
-  print('Brindes recebidos por $nome:');
-  brindes.forEach((brinde) {
-    print('$brinde');
-  });
+      print("Produtos comprados por $nome:");
+      produtosComprados.forEach((produto) {
+        print("${produto.nome} - ${produto.valor}");
+      });
+    }
+  }
 }
