@@ -156,6 +156,8 @@ main() {
   revendedorC.falar("Temos promoções!");
   pularLinha();
 
+  double valorTotalProduto = revendedorA.calcularTotalVendido();
+  print('O total vendido pelo revendedor é: $valorTotalProduto');
   pularLinha();
 
   //teste método cliente falar
