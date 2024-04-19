@@ -1,5 +1,5 @@
 class Brinde {
-  int qtdEmEstoque = 0;
+  int qtdEmEstoque;
 
   Brinde({required this.qtdEmEstoque});
 
