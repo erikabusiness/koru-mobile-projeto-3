@@ -136,7 +136,7 @@ class Menu {
     } while (!confirmado);
 
     cliente.adicionarDinheiro(recarga);
-    stdout.write("Saldo adicionado com sucesso! Novo saldo: R\$${cliente.dinheiro}\n");
+    stdout.write("Saldo adicionado com sucesso! Novo saldo: R\$${fixarDuasCasasDecimais(cliente.dinheiro)}\n");
   }
 
   static void menuPrincipal(List<Revendedor> revendedores, List<Produto> produtos) {
@@ -144,7 +144,7 @@ class Menu {
     bool sair = false;
 
     do {
-      int? entrada = int.tryParse(prompt("[1] - Comprar Produtos\n[2] - Adicionar Dinheiro\n[3] - Consultar Saldo\n[4] - Troca de Pontos\n[0] - Sair\n\n"
+      int? entrada = int.tryParse(prompt("[1] - Comprar Produtos\n[2] - Adicionar Saldo\n[3] - Consultar Saldo\n[4] - Troca de Pontos\n[5] - Consultar Pontos\n[0] - Sair\n\n"
           "Seja bem-vindo(a) ${cliente.nome}, ao nosso sistema de atendimento, escolha uma de nossas opções de atendimento: "));
 
       switch(entrada) {
@@ -155,10 +155,13 @@ class Menu {
           menuSaldo(cliente);
           break;
         case 3:
-        stdout.write("O Seu saldo atual é de: ${cliente.dinheiro}\n");
+        stdout.write("O Seu saldo atual é de: ${fixarDuasCasasDecimais(cliente.dinheiro)}\n");
           break;
         case 4:
-        //Chamar Menu de adição de valores
+        //Chamar Menu de pontos
+          break;
+        case 5:
+        //Chamar variavel de pontos de cliente
           break;
         case 0:
           sair = true;
@@ -171,16 +174,3 @@ class Menu {
   }
 }
 
-void main() {
-  List<Produto> catalogo = [
-    Produto(nome: "Colônia Floratta Flores Secretas 75ml", valor: 104.90, qtdEmEstoque: 3),
-    Produto(nome: "Colônia Floratta Red 75ml", valor: 75.90, qtdEmEstoque: 10),
-  ];
-
-  List<Revendedor> revendedores = [
-    Revendedor(nome: 'Ariel', cpf: '12345678910', dataDeNascimento: DateTime(1980, 6, 10), genero: Genero.Outro, matricula: ''),
-    Revendedor(nome: 'jhonny', cpf: '123456', dataDeNascimento: DateTime.parse('1991-12-21'), matricula: '123456789', genero: Genero.Masculino),
-  ];
-
-  Menu.menuPrincipal(revendedores, catalogo);
-}
