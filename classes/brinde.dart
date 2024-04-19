@@ -15,4 +15,8 @@ class Brinde {
 
     print('Para ganhar um(a) $nome você precisa de $pontosNecessarios pontos');
   }
+
+  static void ordenarBrindes(List<Brinde> brindes) {
+    brindes.sort((a, b) => a.nome.compareTo(b.nome));
+  }
 }

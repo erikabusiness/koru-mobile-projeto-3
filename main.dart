@@ -233,7 +233,12 @@ main() {
       qtdEmEstoque: 20);
 
   brindeA.consultarPontosNecessarios();
+
+  List<Brinde> brindes = [
+    Brinde(nome: "Colônia Floratta Red 75ml", pontosNecessarios: 100),
+    Brinde(nome: "Lápis Batom Instalip Vinho", pontosNecessarios: 200),
+    Brinde(nome: "212", pontosNecessarios: 500)
+  ];
+
+  Brinde.ordenarBrindes(brindes);
 }
-
-
-
