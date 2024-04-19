@@ -1,9 +1,9 @@
 import 'pessoa.dart';
 import 'produto.dart';
 import 'revendedor.dart';
+import '../utils.dart';
 
 class Cliente extends Pessoa {
-
   double dinheiro;
 
   List<Produto> produtosComprados = [];
@@ -16,7 +16,6 @@ class Cliente extends Pessoa {
     this.dinheiro = 0.0,
   });
 
-
   //método falar
   @override
   void falar(String fala) {
@@ -26,41 +25,73 @@ class Cliente extends Pessoa {
   //metodo comprarProduto (retorno: void)
   void comprarProduto(Produto produto, Revendedor revendedor) {
     if (dinheiro >= produto.valor) {
-      revendedor.venderProduto(produto);
-      dinheiro -= produto.valor;
-      produtosComprados.add(produto);
+      try {
+        revendedor.venderProduto(produto);
+        dinheiro -= produto.valor;
+        produtosComprados.add(produto);
+      } catch (e) {
+        print(e.toString());
+      }
     } else {
       print(
           '$nome não possui dinheiro suficiente para comprar o produto ${produto.nome}');
     }
   }
-  
-    void adicionarDinheiro(double? valor) {
+
+  void adicionarDinheiro(double? valor) {
     if (valor != null) {
       dinheiro += valor;
-      print("$nome adicionou $valor à sua carteira. Agora você tem $dinheiro em dinheiro.");
+      print(
+          "$nome adicionou $valor à sua carteira. Agora você tem $dinheiro em dinheiro.");
     } else {
       print("Nenhum valor adicionado à carteira");
     }
   }
 
-  void calcularMediaValorProdutosComprados() {
-    if(produtosComprados.isEmpty) {
+  double calcularTotalGasto() {
+    double totalGasto = 0.0;
+    if (produtosComprados.isEmpty) {
       print("Cliente $nome não possui produtos comprados");
     } else {
+      produtosComprados.forEach((produto) {
+        totalGasto += produto.valor;
+      });
+    }
+    return totalGasto;
+  }
+
+  double calcularMediaValorProdutosComprados() {
+    if (produtosComprados.isEmpty) {
+      return 0;
+    } else {
       List<Produto> produtosComprados = this.produtosComprados;
-      double valorTotalGasto = 0.0;
       int numeroDeProdutos = produtosComprados.length;
       double valorMedio;
 
-      produtosComprados.forEach((produto) {
-        valorTotalGasto += produto.valor;
-      });
+      valorMedio = calcularTotalGasto() / numeroDeProdutos;
 
-      valorMedio = valorTotalGasto / numeroDeProdutos;
-
-      print("O valor médio gasto em produtos pelo cliente $nome, é de R\$ $valorMedio");
+     return valorMedio;
     }
   }
+
+  void ordenarProdutosComprados() {
+    produtosComprados.sort((a, b) => a.nome.compareTo(b.nome));
+  }
+
+  void verResumo(double valorTotalGasto, double valorMedioGasto) {
+    print(
+        "O total gasto por ${nome} foi ${fixarDuasCasasDecimais(calcularTotalGasto())} reais e a média de valor dos produtos comprados é ${fixarDuasCasasDecimais(calcularMediaValorProdutosComprados())} reais.");
+  }
+
+
+ void verBrindes() {
+    ordenarBrindes();
+    print('Brindes recebidos por $nome:');
+    brindes.forEach((brinde) {
+      print('$brinde');
+    });
+  }
 }
+
+
 
