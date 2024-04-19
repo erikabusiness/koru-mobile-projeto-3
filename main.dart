@@ -89,6 +89,7 @@ main() {
   print('Nome: ${pessoaA.nome}');
   print('CPF: ${pessoaA.cpf}');
   print('Genero: ${Genero.Feminino.name}');
+ pessoaA.termometroDoHumor(Humor.confiante);
 
   /* Testes da classe Pessoa */
 
@@ -126,11 +127,14 @@ main() {
       cpf: '123456',
       dataDeNascimento: DateTime.parse('1991-12-21'),
       matricula: '123456789',
-      genero: Genero.Masculino);
+      genero: Genero.Masculino
+      );
 
   print('Matrícula do revendedor: ${revendedorA.matricula}');
   print(
       'Porcentagem de lucro: ${(revendedorA.porcentagemLucro * 100).toStringAsFixed(0)}%');
+   print("Lucro do revendedor A: ${fixarDuasCasasDecimais(revendedorA.calcularLucro())}");
+   print("Média dos produtos vendidos: ${fixarDuasCasasDecimais(revendedorA.calcularMediaProdutosVendidos())}");
 
   Revendedor revendedorB = Revendedor(
     nome: 'Ariel',
@@ -153,7 +157,8 @@ main() {
   revendedorC.falar("Temos promoções!");
   pularLinha();
 
-  revendedorA.verResumo();
+  double valorTotalProduto = revendedorA.calcularTotalVendido();
+  print('O total vendido pelo revendedor é: $valorTotalProduto');
   pularLinha();
 
   //teste método cliente falar
@@ -199,6 +204,8 @@ main() {
 
   clienteX.comprarProduto(produtoA, revendedorA);
   clienteX.comprarProduto(produtoB, revendedorC);
+  //teste método calcularTotalGasto
+  print(clienteX.calcularTotalGasto());
   clienteX.calcularMediaValorProdutosComprados();
 
 //cliente sem dinheiro
@@ -212,4 +219,20 @@ main() {
   
   // Teste de Método Trocar Pontos Por Brinde
   clienteY.trocarPontosPorBrinde(brindeA);
+  
+  //teste método verBrindes
+  clienteY.verBrindes();
+
+  /* ------------------------------------------ */
+  /* Testes da classe Brinde */
+
+  Brinde brindeA = Brinde(
+      nome: 'Lápis Batom Instalip Vinho',
+      pontosNecessarios: 50,
+      qtdEmEstoque: 20);
+
+  brindeA.consultarPontosNecessarios();
 }
+
+
+
