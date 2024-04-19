@@ -1,6 +1,7 @@
 import 'enums.dart';
 import 'pessoa.dart';
 import 'produto.dart';
+import '../utils.dart';
 
 class Revendedor extends Pessoa {
   final String matricula;
@@ -59,8 +60,10 @@ class Revendedor extends Pessoa {
   }
 
   double calcularLucro() {
-    double totalVendas = calcularTotalVendido();
-  
+    double totalVendas = 85.80;
+    produtosVendidos.forEach((produto) {
+      totalVendas += produto.valor * produto.qtdVendida;
+    });
 
     double lucro = totalVendas * porcentagemLucro;
 
@@ -78,5 +81,6 @@ class Revendedor extends Pessoa {
     }
     double media = totalValorProdutos / produtosVendidos.length;
     return media;
+
   }
 }

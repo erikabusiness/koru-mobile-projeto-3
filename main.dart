@@ -88,6 +88,7 @@ main() {
   print('Nome: ${pessoaA.nome}');
   print('CPF: ${pessoaA.cpf}');
   print('Genero: ${Genero.Feminino.name}');
+ pessoaA.termometroDoHumor(Humor.confiante);
 
   /* Testes da classe Pessoa */
 
@@ -155,6 +156,8 @@ main() {
   revendedorC.falar("Temos promoções!");
   pularLinha();
 
+  pularLinha();
+
   //teste método cliente falar
   Cliente clienteA = Cliente(
     nome: 'João',
@@ -198,8 +201,9 @@ main() {
 
   clienteX.comprarProduto(produtoA, revendedorA);
   clienteX.comprarProduto(produtoB, revendedorC);
+  //teste método calcularTotalGasto
+  print(clienteX.calcularTotalGasto());
   clienteX.calcularMediaValorProdutosComprados();
-  clienteX.verProdutosComprados();
 
 //cliente sem dinheiro
   Cliente clienteY = Cliente(
@@ -210,5 +214,19 @@ main() {
       genero: Genero.Masculino);
 
   clienteY.comprarProduto(produtoB, revendedorA);
-  clienteY.verProdutosComprados();
+  //teste método verBrindes
+  clienteY.verBrindes();
+
+  /* ------------------------------------------ */
+  /* Testes da classe Brinde */
+
+  Brinde brindeA = Brinde(
+      nome: 'Lápis Batom Instalip Vinho',
+      pontosNecessarios: 50,
+      qtdEmEstoque: 20);
+
+  brindeA.consultarPontosNecessarios();
 }
+
+
+
