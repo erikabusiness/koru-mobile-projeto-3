@@ -203,6 +203,7 @@ main() {
       genero: Genero.Feminino);
 
   clienteX.comprarProduto(produtoA, revendedorA);
+  clienteX.consultarTotalPontos();
   clienteX.comprarProduto(produtoB, revendedorC);
   //teste método calcularTotalGasto
   print(clienteX.calcularTotalGasto());
