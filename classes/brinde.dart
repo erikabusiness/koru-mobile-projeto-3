@@ -1,5 +1,7 @@
-
 class Brinde {
+  int qtdEmEstoque;
+
+  Brinde({required this.qtdEmEstoque});
 
   final int pontosNecessarios;
   final String nome;
