@@ -2,6 +2,7 @@ import 'pessoa.dart';
 import 'produto.dart';
 import 'revendedor.dart';
 import '../utils.dart';
+import 'brinde.dart';
 
 class Cliente extends Pessoa {
   double dinheiro;
@@ -92,6 +93,21 @@ class Cliente extends Pessoa {
       print('$brinde');
     });
   }
+
+  void trocarPontosPorBrinde(Brinde brinde){
+    if(pontos >= brinde.pontosNecessarios){
+      try{
+        brinde.realizarTroca();
+        this.pontos -= brinde.pontosNecessarios;
+        brindes.add(brinde);
+      }catch(e){
+        print(e.toString());
+      }
+    }else{
+      print('$nome não possui pontos suficientes para trocar pelo brinde ${brinde.nome}.');
+    }
+  }
+
 }
 
 

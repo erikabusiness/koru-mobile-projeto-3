@@ -1,4 +1,5 @@
 // Importações dos arquivos que serão utilizados
+import 'classes/brinde.dart';
 import 'classes/enums.dart';
 import 'classes/pessoa.dart';
 import 'classes/produto.dart';
@@ -214,8 +215,11 @@ main() {
       dataDeNascimento: DateTime.parse('2005-10-03'),
       dinheiro: 2.50,
       genero: Genero.Masculino);
-
   clienteY.comprarProduto(produtoB, revendedorA);
+  
+  // Teste de Método Trocar Pontos Por Brinde
+  clienteY.trocarPontosPorBrinde(brindeA);
+  
   //teste método verBrindes
   clienteY.verBrindes();
 
