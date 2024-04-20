@@ -22,7 +22,7 @@ class Cliente extends Pessoa {
   //método falar
   @override
   void falar(String fala) {
-    print("Cliente $nome diz: $fala");
+    print('Cliente $nome diz: $fala');
   }
 
   //metodo comprarProduto (retorno: void)
@@ -46,16 +46,16 @@ class Cliente extends Pessoa {
     if (valor != null) {
       dinheiro += valor;
       print(
-          "$nome adicionou $valor à sua carteira. Agora você tem $dinheiro em dinheiro.");
+          '$nome adicionou $valor à sua carteira. Agora você tem $dinheiro em dinheiro.');
     } else {
-      print("Nenhum valor adicionado à carteira");
+      print('Nenhum valor adicionado à carteira');
     }
   }
 
   double calcularTotalGasto() {
     double totalGasto = 0.0;
     if (produtosComprados.isEmpty) {
-      print("Cliente $nome não possui produtos comprados");
+      print('Cliente $nome não possui produtos comprados');
     } else {
       produtosComprados.forEach((produto) {
         totalGasto += produto.valor;
@@ -83,18 +83,18 @@ class Cliente extends Pessoa {
   }
 
   void consultarTotalPontos() {
-    String _singularOuPlural = pontos == 1 ? "ponto" : "pontos";
-    print("Olá $nome, você possui $pontos $_singularOuPlural!");
+    String _singularOuPlural = pontos == 1 ? 'ponto' : 'pontos';
+    print('Olá $nome, você possui $pontos $_singularOuPlural!');
   }
 
   void verResumo(double valorTotalGasto, double valorMedioGasto) {
     print(
-        "O total gasto por ${nome} foi ${fixarDuasCasasDecimais(calcularTotalGasto())} reais e a média de valor dos produtos comprados é ${fixarDuasCasasDecimais(calcularMediaValorProdutosComprados())} reais.");
+        'O total gasto por ${nome} foi ${fixarDuasCasasDecimais(calcularTotalGasto())} reais e a média de valor dos produtos comprados é ${fixarDuasCasasDecimais(calcularMediaValorProdutosComprados())} reais.');
   }
 
   void verProdutosComprados() {
     if (produtosComprados.isEmpty) {
-      print("Cliente $nome não possui produtos comprados");
+      print('Cliente $nome não possui produtos comprados');
     } else {
       ordenarProdutosComprados();
     }
