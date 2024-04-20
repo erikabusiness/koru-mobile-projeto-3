@@ -72,7 +72,7 @@ class Cliente extends Pessoa {
 
       valorMedio = calcularTotalGasto() / numeroDeProdutos;
 
-     return valorMedio;
+      return valorMedio;
     }
   }
 
@@ -84,13 +84,13 @@ class Cliente extends Pessoa {
     String _singularOuPlural = pontos == 1 ? "ponto" : "pontos";
     print("Olá $nome, você possui $pontos $_singularOuPlural!");
   }
+
   void verResumo(double valorTotalGasto, double valorMedioGasto) {
     print(
         "O total gasto por ${nome} foi ${fixarDuasCasasDecimais(calcularTotalGasto())} reais e a média de valor dos produtos comprados é ${fixarDuasCasasDecimais(calcularMediaValorProdutosComprados())} reais.");
   }
 
-
- void verBrindes() {
+  void verBrindes() {
     ordenarBrindes();
     print('Brindes recebidos por $nome:');
     brindes.forEach((brinde) {
@@ -98,21 +98,18 @@ class Cliente extends Pessoa {
     });
   }
 
-  void trocarPontosPorBrinde(Brinde brinde){
-    if(pontos >= brinde.pontosNecessarios){
-      try{
+  void trocarPontosPorBrinde(Brinde brinde) {
+    if (pontos >= brinde.pontosNecessarios) {
+      try {
         brinde.realizarTroca();
         this.pontos -= brinde.pontosNecessarios;
         brindes.add(brinde);
-      }catch(e){
+      } catch (e) {
         print(e.toString());
       }
-    }else{
-      print('$nome não possui pontos suficientes para trocar pelo brinde ${brinde.nome}.');
+    } else {
+      print(
+          '$nome não possui pontos suficientes para trocar pelo brinde ${brinde.nome}.');
     }
   }
-
 }
-
-
-

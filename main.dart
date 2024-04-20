@@ -89,7 +89,7 @@ main() {
   print('Nome: ${pessoaA.nome}');
   print('CPF: ${pessoaA.cpf}');
   print('Genero: ${Genero.Feminino.name}');
- pessoaA.termometroDoHumor(Humor.confiante);
+  pessoaA.termometroDoHumor(Humor.confiante);
 
   /* Testes da classe Pessoa */
 
@@ -127,14 +127,15 @@ main() {
       cpf: '123456',
       dataDeNascimento: DateTime.parse('1991-12-21'),
       matricula: '123456789',
-      genero: Genero.Masculino
-      );
+      genero: Genero.Masculino);
 
   print('Matrícula do revendedor: ${revendedorA.matricula}');
   print(
       'Porcentagem de lucro: ${(revendedorA.porcentagemLucro * 100).toStringAsFixed(0)}%');
-   print("Lucro do revendedor A: ${fixarDuasCasasDecimais(revendedorA.calcularLucro())}");
-   print("Média dos produtos vendidos: ${fixarDuasCasasDecimais(revendedorA.calcularMediaProdutosVendidos())}");
+  print(
+      "Lucro do revendedor A: ${fixarDuasCasasDecimais(revendedorA.calcularLucro())}");
+  print(
+      "Média dos produtos vendidos: ${fixarDuasCasasDecimais(revendedorA.calcularMediaProdutosVendidos())}");
 
   Revendedor revendedorB = Revendedor(
     nome: 'Ariel',
@@ -233,6 +234,7 @@ main() {
       qtdEmEstoque: 20);
 
   brindeA.consultarPontosNecessarios();
+  brindeA.realizarTroca();
 
   List<Brinde> brindes = [
     Brinde(nome: "Colônia Floratta Red 75ml", pontosNecessarios: 100),
