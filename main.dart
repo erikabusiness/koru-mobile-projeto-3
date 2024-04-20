@@ -52,7 +52,7 @@ main() {
   // Exemplo: produtoA.realizarVenda();
   // Saída esperada 1: Compra de um produto Colônia Floratta Flores Secretas 75ml realizada com sucesso!
   // Saída esperada 2: No momento não possuímos o produto Colônia Floratta Flores Secretas 75ml em estoque.
- 
+
   try {
     produtoA.realizarVenda(quantidade: 3);
   } catch (e) {
@@ -69,10 +69,9 @@ main() {
   // Exemplo: print(produtoA.verReceitaGerada());
   // Exemplo: print(produtoA.verReceitaGerada());
 
-  
   print(fixarDuasCasasDecimais(produtoA.verReceitaGerada()));
   print(fixarDuasCasasDecimais(produtoB.verReceitaGerada()));
-  pularLinha(); 
+  pularLinha();
 
   /* ------------------------------------------ */
 
@@ -121,11 +120,10 @@ main() {
   // Saída esperada 1: Maria tem 30 anos, portanto é maior de idade.
   // Saída esperada 2: João tem 14 anos, portanto é menor de idade.
 
-  
   pessoaC.verificarMaioridade();
   pessoaB.verificarMaioridade();
 
-   pularLinha();
+  pularLinha();
   /* Testes da classe Revendedor */
   Revendedor revendedorA = Revendedor(
       nome: 'jhonny',
@@ -238,12 +236,25 @@ main() {
   //Teste do método comprarProduto
   clienteX.comprarProduto(produtoA, revendedorA);
   clienteY.comprarProduto(produtoB, revendedorA);
-  clienteX.consultarTotalPontos();
   clienteX.comprarProduto(produtoB, revendedorC);
 
   //teste método calcularTotalGasto
   print(clienteX.calcularTotalGasto());
+
+  //teste do método calcularMediaValorProdutosComprados
   clienteX.calcularMediaValorProdutosComprados();
+
+  //teste do método ordenarProdutosComprados
+  clienteX.ordenarProdutosComprados();
+
+  //teste do método consultarTotalPontos
+  clienteX.consultarTotalPontos();
+
+  //teste do método verResumo
+  clienteX.verResumo(clienteX.calcularTotalGasto, clienteX.calcularMediaValorProdutosComprados);
+
+  //teste do método verProdutosComprados
+  clienteX.verProdutosComprados();
 
   //teste método verBrindes
   clienteY.verBrindes();
