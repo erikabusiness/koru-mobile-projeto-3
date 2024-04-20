@@ -21,8 +21,4 @@ class Brinde {
       throw Exception('No momento não possuímos o produto ${this.nome} em estoque.');
     }
   }
-
-  static void ordenarBrindes(List<Brinde> brindes) {
-    brindes.sort((a, b) => a.nome.compareTo(b.nome));
-  }
 }
