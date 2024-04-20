@@ -10,15 +10,15 @@ class Brinde {
   });
 
   void consultarPontosNecessarios() {
-    print('Para ganhar um(a) $nome você precisa de $pontosNecessarios pontos');
+    print('Para ganhar um(a) ${this.nome} você precisa de ${this.pontosNecessarios} pontos.');
   }
 
   void realizarTroca() {
     if (qtdEmEstoque > 0) {
       qtdEmEstoque--;
-      print('Troca realizada! Você ganhou um(a) $nome.');
+      print('Troca realizada! Você ganhou um(a) ${this.nome}.');
     } else {
-      throw Exception('No momento não possuímos o produto $nome em estoque.');
+      throw Exception('No momento não possuímos o produto ${this.nome} em estoque.');
     }
   }
 
