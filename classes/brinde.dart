@@ -1,8 +1,8 @@
 class Brinde {
-  int qtdEmEstoque;
-  final int pontosNecessarios;
   final String nome;
-
+  final int pontosNecessarios;
+  int qtdEmEstoque;
+  
   Brinde({
     required this.pontosNecessarios,
     required this.nome,
