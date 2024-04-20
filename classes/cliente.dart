@@ -99,6 +99,10 @@ class Cliente extends Pessoa {
       ordenarProdutosComprados();
     }
 
+static void ordenarBrindes(List<Brinde> brindes) {
+    brindes.sort((a, b) => a.nome.compareTo(b.nome));
+  }
+  
     void verBrindes() {
       ordenarBrindes();
       print('Brindes recebidos por $nome:');
