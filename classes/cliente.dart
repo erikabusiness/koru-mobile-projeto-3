@@ -105,10 +105,14 @@ class Cliente extends Pessoa {
   }
 
   void verBrindes() {
-    print('Brindes recebidos por $nome:');
-    brindes.forEach((brinde) {
-      print('$brinde');
-    });
+    if (brindes.isEmpty) {
+      print('$nome ainda não recebeu nenhum brinde');
+    } else {
+      print('Brindes recebidos por $nome:');
+      brindes.forEach((brinde) {
+        print('$brinde');
+      });
+    }
   }
 
   void trocarPontosPorBrinde(Brinde brinde) {
@@ -125,5 +129,4 @@ class Cliente extends Pessoa {
           '$nome não possui pontos suficientes para trocar pelo brinde ${brinde.nome}.');
     }
   }
-
 }
