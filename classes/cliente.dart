@@ -8,7 +8,7 @@ class Cliente extends Pessoa {
   double dinheiro;
 
   List<Produto> produtosComprados = [];
-  List<String> brindes = [];
+  List<Brinde> brindes = [];
   int pontos = 0;
 
   Cliente({
