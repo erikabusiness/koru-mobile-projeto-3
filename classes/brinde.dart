@@ -1,5 +1,7 @@
-
 class Brinde {
+  int qtdEmEstoque;
+
+  Brinde({required this.qtdEmEstoque});
 
   final int pontosNecessarios;
   final String nome;
@@ -10,7 +12,6 @@ class Brinde {
   });
 
   void consultarPontosNecessarios() {
-
     print('Para ganhar um(a) $nome você precisa de $pontosNecessarios pontos');
   }
 
@@ -21,5 +22,9 @@ class Brinde {
     } else {
       throw Exception('No momento não possuímos o produto $nome em estoque.');
     }
+  }
+
+  static void ordenarBrindes(List<Brinde> brindes) {
+    brindes.sort((a, b) => a.nome.compareTo(b.nome));
   }
 }

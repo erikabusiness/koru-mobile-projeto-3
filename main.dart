@@ -158,6 +158,8 @@ main() {
   revendedorC.falar("Temos promoções!");
   pularLinha();
 
+  double valorTotalProduto = revendedorA.calcularTotalVendido();
+  print('O total vendido pelo revendedor é: $valorTotalProduto');
   pularLinha();
 
   //teste método cliente falar
@@ -202,6 +204,7 @@ main() {
       genero: Genero.Feminino);
 
   clienteX.comprarProduto(produtoA, revendedorA);
+  clienteX.consultarTotalPontos();
   clienteX.comprarProduto(produtoB, revendedorC);
   //teste método calcularTotalGasto
   print(clienteX.calcularTotalGasto());
@@ -214,8 +217,11 @@ main() {
       dataDeNascimento: DateTime.parse('2005-10-03'),
       dinheiro: 2.50,
       genero: Genero.Masculino);
-
   clienteY.comprarProduto(produtoB, revendedorA);
+  
+  // Teste de Método Trocar Pontos Por Brinde
+  clienteY.trocarPontosPorBrinde(brindeA);
+  
   //teste método verBrindes
   clienteY.verBrindes();
 
@@ -229,4 +235,12 @@ main() {
 
   brindeA.consultarPontosNecessarios();
   brindeA.realizarTroca();
+
+  List<Brinde> brindes = [
+    Brinde(nome: "Colônia Floratta Red 75ml", pontosNecessarios: 100),
+    Brinde(nome: "Lápis Batom Instalip Vinho", pontosNecessarios: 200),
+    Brinde(nome: "212", pontosNecessarios: 500)
+  ];
+
+  Brinde.ordenarBrindes(brindes);
 }
