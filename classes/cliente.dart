@@ -6,10 +6,9 @@ import 'brinde.dart';
 
 class Cliente extends Pessoa {
   double dinheiro;
-
+  int pontos = 0;
   List<Produto> produtosComprados = [];
   List<Brinde> brindes = [];
-  int pontos = 0;
 
   Cliente({
     required super.nome,
@@ -19,13 +18,11 @@ class Cliente extends Pessoa {
     this.dinheiro = 0.0,
   });
 
-  //método falar
   @override
   void falar(String fala) {
     print('Cliente $nome diz: $fala');
-  }
+  } 
 
-  //metodo comprarProduto (retorno: void)
   void comprarProduto(Produto produto, Revendedor revendedor) {
     if (dinheiro >= produto.valor) {
       try {
@@ -40,7 +37,7 @@ class Cliente extends Pessoa {
       print(
           '$nome não possui dinheiro suficiente para comprar o produto ${produto.nome}');
     }
-  }
+  } 
 
   void adicionarDinheiro(double? valor) {
     if (valor != null) {
@@ -50,7 +47,7 @@ class Cliente extends Pessoa {
     } else {
       print('Nenhum valor adicionado à carteira');
     }
-  }
+  } 
 
   double calcularTotalGasto() {
     double totalGasto = 0.0;
@@ -62,7 +59,7 @@ class Cliente extends Pessoa {
       });
     }
     return totalGasto;
-  }
+  } 
 
   double calcularMediaValorProdutosComprados() {
     if (produtosComprados.isEmpty) {
@@ -87,16 +84,14 @@ class Cliente extends Pessoa {
     print('Olá $nome, você possui $pontos $_singularOuPlural!');
   }
 
-  void verResumo(double Function() calcularTotalGasto, double Function() calcularMediaValorProdutosComprados) {
-  print(
-      'O total gasto por ${nome} foi ${fixarDuasCasasDecimais(calcularTotalGasto())} reais e a média de valor dos produtos comprados é ${fixarDuasCasasDecimais(calcularMediaValorProdutosComprados())} reais.');
-}
-
   void verProdutosComprados() {
     if (produtosComprados.isEmpty) {
       print('Cliente $nome não possui produtos comprados');
     } else {
-      ordenarProdutosComprados();
+    ordenarProdutosComprados();
+    this.produtosComprados.forEach((produto) {
+        print('${produto.nome}');
+      });
     }
   }
 
@@ -105,12 +100,13 @@ class Cliente extends Pessoa {
   }
 
   void verBrindes() {
+    ordenarBrindes(brindes);
     if (brindes.isEmpty) {
       print('$nome ainda não recebeu nenhum brinde');
     } else {
       print('Brindes recebidos por $nome:');
       brindes.forEach((brinde) {
-        print('$brinde');
+        print('${brinde.nome}');
       });
     }
   }
@@ -120,7 +116,7 @@ class Cliente extends Pessoa {
       try {
         brinde.realizarTroca();
         this.pontos -= brinde.pontosNecessarios;
-        brindes.add(brinde);
+        this.brindes.add(brinde);
       } catch (e) {
         print(e.toString());
       }
@@ -128,5 +124,10 @@ class Cliente extends Pessoa {
       print(
           '$nome não possui pontos suficientes para trocar pelo brinde ${brinde.nome}.');
     }
+  }
+
+  void verResumo() {
+    print(
+        'O total gasto por ${nome} foi ${fixarDuasCasasDecimais(this.calcularTotalGasto())} reais e a média de valor dos produtos comprados é ${fixarDuasCasasDecimais(this.calcularMediaValorProdutosComprados())} reais.');
   }
 }

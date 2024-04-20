@@ -41,10 +41,10 @@ main() {
   Produto produtoA = Produto(
       nome: "Colônia Floratta Flores Secretas 75ml",
       valor: 104.90,
-      qtdEmEstoque: 3);
+      qtdEmEstoque: 10);
 
-  Produto produtoB =
-      Produto(nome: "Colônia Floratta Red 75ml", valor: 75.90, qtdEmEstoque: 0);
+  Produto produtoB = Produto(
+      nome: "Colônia Floratta Red 75ml", valor: 75.90, qtdEmEstoque: 10);
 
   /* Testes da classe Produto */
 
@@ -170,8 +170,13 @@ main() {
 
   Brinde brindeA = Brinde(
       nome: 'Lápis Batom Instalip Vinho',
-      pontosNecessarios: 50,
+      pontosNecessarios: 1,
       qtdEmEstoque: 20);
+
+  Brinde brindeB = Brinde(
+      nome: 'Creme Hidratante Para as Mãos Cuide-se Bem Beijinho',
+      pontosNecessarios: 1,
+      qtdEmEstoque: 15);
 
   brindeA.consultarPontosNecessarios();
   brindeA.realizarTroca();
@@ -179,14 +184,16 @@ main() {
   List<Brinde> brindes = [
     Brinde(
         nome: "Colônia Floratta Red 75ml",
-        pontosNecessarios: 100,
+        pontosNecessarios: 2,
         qtdEmEstoque: 5),
     Brinde(
         nome: "Lápis Batom Instalip Vinho",
-        pontosNecessarios: 200,
+        pontosNecessarios: 2,
         qtdEmEstoque: 8),
     Brinde(nome: "212", pontosNecessarios: 500, qtdEmEstoque: 10)
   ];
+
+  pularLinha();
 
   /* ------------------------------------------ */
   /* Testes da classe Cliente */
@@ -251,17 +258,16 @@ main() {
   clienteX.consultarTotalPontos();
 
   //teste do método verResumo
-  clienteX.verResumo(clienteX.calcularTotalGasto, clienteX.calcularMediaValorProdutosComprados);
+  clienteX.verResumo();
 
   //teste do método verProdutosComprados
   clienteX.verProdutosComprados();
 
-  //teste método verBrindes
-  clienteY.verBrindes();
-
   // Teste de Método Trocar Pontos Por Brinde
-  clienteY.trocarPontosPorBrinde(brindeA);
+  clienteX.trocarPontosPorBrinde(brindeA);
+  clienteX.trocarPontosPorBrinde(brindeB);
 
-  //teste do método ordenarBrindes
-  Cliente.ordenarBrindes(brindes);
+  //teste método verBrindes
+  clienteX.verBrindes();
+
 }
