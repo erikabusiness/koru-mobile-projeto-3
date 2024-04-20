@@ -9,6 +9,7 @@ class Cliente extends Pessoa {
 
   List<Produto> produtosComprados = [];
   List<String> brindes = [];
+  int pontos = 0;
 
   Cliente({
     required super.nome,
