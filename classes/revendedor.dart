@@ -61,7 +61,7 @@ class Revendedor extends Pessoa {
     if (produtos.isEmpty) {
       return 0.0;
     } else {
-      late double valorTotalProduto;
+      double valorTotalProduto = 0;
       produtos.forEach((produto) {
         valorTotalProduto += produto.valor;
       });
