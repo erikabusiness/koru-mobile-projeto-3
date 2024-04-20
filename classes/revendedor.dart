@@ -5,7 +5,8 @@ import '../utils.dart';
 
 class Revendedor extends Pessoa {
   final String matricula;
-  final double porcentagemLucro;
+  final double porcentagemLucro = 0.2;
+  List<Produto> produtosVendidos = <Produto>[];
 
   Revendedor({
     required super.nome,
@@ -13,26 +14,22 @@ class Revendedor extends Pessoa {
     required super.dataDeNascimento,
     required super.genero,
     required this.matricula,
-  }) : porcentagemLucro = 0.2;
+  }); 
 
-  List<Produto> produtosVendidos = <Produto>[];
-
-  //método falar
   @override
   void falar(String fala) {
     switch (genero) {
       case Genero.Feminino:
-        print("Revendedora $nome diz: $fala ");
+        print("Revendedora ${this.nome} diz: $fala ");
         break;
       case Genero.Masculino:
-        print("Revendedor $nome diz: $fala");
+        print("Revendedor ${this.nome} diz: $fala");
         break;
       default:
-        print("Pessoa revendedora $nome diz: $fala");
+        print("Pessoa revendedora ${this.nome} diz: $fala");
     }
   }
 
-  //método venderProduto
   void venderProduto(Produto produto, {int quantidade = 1}) {
     try {
       // Tenta realizar a venda do produto com a quantidade especificada.
@@ -59,42 +56,44 @@ class Revendedor extends Pessoa {
     }
   }
 
-  double calcularLucro() {
-    double totalVendas = 85.80;
-    produtosVendidos.forEach((produto) {
-      totalVendas += produto.valor * produto.qtdVendida;
-    });
-
-    double lucro = totalVendas * porcentagemLucro;
-
-    return lucro;
-  }
-
-  double calcularMediaProdutosVendidos() {
-    if (produtosVendidos.isEmpty) {
-      return 0;
-    }
-
-    double totalValorProdutos = 0;
-    for (var produto in produtosVendidos) {
-      totalValorProdutos += produto.valor * produto.qtdVendida;
-    }
-    double media = totalValorProdutos / produtosVendidos.length;
-    return media;
-
-  }
-
-  //Método calcular total vendido
-  double calcularTotalVendido() {
+  double _calcularTotalVendido() {
     List<Produto> produtos = this.produtosVendidos;
     if (produtos.isEmpty) {
       return 0.0;
     } else {
-      late double valorTotalProduto;
+      double valorTotalProduto = 0;
       produtos.forEach((produto) {
         valorTotalProduto += produto.valor;
       });
       return valorTotalProduto;
     }
   }
+
+  double _calcularMediaProdutosVendidos() {
+    if (this.produtosVendidos.isEmpty) {
+      return 0;
+    }
+
+    double totalValorProdutos = 0;
+    for (Produto produto in produtosVendidos) {
+      totalValorProdutos += produto.valor * produto.qtdVendida;
+    }
+
+    double media = totalValorProdutos / this.produtosVendidos.length;
+    return media;
+
+  }
+
+  double _calcularLucro() {
+    double totalVendas = this._calcularTotalVendido();
+    double lucro = totalVendas * porcentagemLucro;
+    return lucro;
+  }
+
+  void verResumo(){
+    print('O total vendido por João foi ${fixarDuasCasasDecimais(this._calcularTotalVendido())}.');
+    print('A média aritmética de valor dos produtos vendidos é ${fixarDuasCasasDecimais(this._calcularMediaProdutosVendidos())}.');
+    print('O lucro recebido foi de ${fixarDuasCasasDecimais(this._calcularLucro())}.');
+  }
+  
 }
