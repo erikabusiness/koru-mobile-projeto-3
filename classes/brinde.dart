@@ -22,7 +22,4 @@ class Brinde {
     }
   }
 
-  static void ordenarBrindes(List<Brinde> brindes) {
-    brindes.sort((a, b) => a.nome.compareTo(b.nome));
-  }
 }

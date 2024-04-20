@@ -98,28 +98,33 @@ class Cliente extends Pessoa {
     } else {
       ordenarProdutosComprados();
     }
+  }
 
-    void verBrindes() {
-      ordenarBrindes();
-      print('Brindes recebidos por $nome:');
-      brindes.forEach((brinde) {
-        print('$brinde');
-      });
-    }
+  static void ordenarBrindes(List<Brinde> brindes) {
+    brindes.sort((a, b) => a.nome.compareTo(b.nome));
+  }
 
-    void trocarPontosPorBrinde(Brinde brinde) {
-      if (pontos >= brinde.pontosNecessarios) {
-        try {
-          brinde.realizarTroca();
-          this.pontos -= brinde.pontosNecessarios;
-          brindes.add(brinde);
-        } catch (e) {
-          print(e.toString());
-        }
-      } else {
-        print(
-            '$nome não possui pontos suficientes para trocar pelo brinde ${brinde.nome}.');
+  void verBrindes() {
+    ordenarBrindes();
+    print('Brindes recebidos por $nome:');
+    brindes.forEach((brinde) {
+      print('$brinde');
+    });
+  }
+
+  void trocarPontosPorBrinde(Brinde brinde) {
+    if (pontos >= brinde.pontosNecessarios) {
+      try {
+        brinde.realizarTroca();
+        this.pontos -= brinde.pontosNecessarios;
+        brindes.add(brinde);
+      } catch (e) {
+        print(e.toString());
       }
+    } else {
+      print(
+          '$nome não possui pontos suficientes para trocar pelo brinde ${brinde.nome}.');
     }
   }
+
 }
