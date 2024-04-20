@@ -8,6 +8,8 @@ class Cliente extends Pessoa {
   double dinheiro;
 
   List<Produto> produtosComprados = [];
+  List<String> brindes = [];
+  int pontos = 0;
 
   Cliente({
     required super.nome,
@@ -90,26 +92,34 @@ class Cliente extends Pessoa {
         "O total gasto por ${nome} foi ${fixarDuasCasasDecimais(calcularTotalGasto())} reais e a média de valor dos produtos comprados é ${fixarDuasCasasDecimais(calcularMediaValorProdutosComprados())} reais.");
   }
 
-  void verBrindes() {
-    ordenarBrindes();
-    print('Brindes recebidos por $nome:');
-    brindes.forEach((brinde) {
-      print('$brinde');
-    });
-  }
-
-  void trocarPontosPorBrinde(Brinde brinde) {
-    if (pontos >= brinde.pontosNecessarios) {
-      try {
-        brinde.realizarTroca();
-        this.pontos -= brinde.pontosNecessarios;
-        brindes.add(brinde);
-      } catch (e) {
-        print(e.toString());
-      }
+  void verProdutosComprados() {
+    if (produtosComprados.isEmpty) {
+      print("Cliente $nome não possui produtos comprados");
     } else {
-      print(
-          '$nome não possui pontos suficientes para trocar pelo brinde ${brinde.nome}.');
+      ordenarProdutosComprados();
+    }
+
+    void verBrindes() {
+      ordenarBrindes();
+      print('Brindes recebidos por $nome:');
+      brindes.forEach((brinde) {
+        print('$brinde');
+      });
+    }
+
+    void trocarPontosPorBrinde(Brinde brinde) {
+      if (pontos >= brinde.pontosNecessarios) {
+        try {
+          brinde.realizarTroca();
+          this.pontos -= brinde.pontosNecessarios;
+          brindes.add(brinde);
+        } catch (e) {
+          print(e.toString());
+        }
+      } else {
+        print(
+            '$nome não possui pontos suficientes para trocar pelo brinde ${brinde.nome}.');
+      }
     }
   }
 }
