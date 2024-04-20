@@ -41,10 +41,10 @@ main() {
   Produto produtoA = Produto(
       nome: "Colônia Floratta Flores Secretas 75ml",
       valor: 104.90,
-      qtdEmEstoque: 3);
+      qtdEmEstoque: 10);
 
-  Produto produtoB =
-      Produto(nome: "Colônia Floratta Red 75ml", valor: 75.90, qtdEmEstoque: 0);
+  Produto produtoB = Produto(
+      nome: "Colônia Floratta Red 75ml", valor: 75.90, qtdEmEstoque: 10);
 
   /* Testes da classe Produto */
 
@@ -68,6 +68,7 @@ main() {
   // Teste o método verReceitaGerada algumas vezes...
   // Exemplo: print(produtoA.verReceitaGerada());
   // Exemplo: print(produtoA.verReceitaGerada());
+
   print(fixarDuasCasasDecimais(produtoA.verReceitaGerada()));
   print(fixarDuasCasasDecimais(produtoB.verReceitaGerada()));
   pularLinha();
@@ -90,13 +91,14 @@ main() {
   print('CPF: ${pessoaA.cpf}');
   print('Genero: ${Genero.Feminino.name}');
   pessoaA.termometroDoHumor(Humor.confiante);
- pessoaA.termometroDoHumor(Humor.confiante);
+  pessoaA.termometroDoHumor(Humor.confiante);
 
   /* Testes da classe Pessoa */
 
   // Teste o método falar algumas vezes...
   // Exemplo: pessoaA.falar('Oi, tudo bem?');
   // Saída esperada: Maria diz: Oi, tudo bem?
+
   pessoaA.falar('Oi, tudo bem?');
 
   Pessoa pessoaC = Pessoa(
@@ -121,7 +123,7 @@ main() {
   pessoaC.verificarMaioridade();
   pessoaB.verificarMaioridade();
 
-  // pularLinha();
+  pularLinha();
   /* Testes da classe Revendedor */
   Revendedor revendedorA = Revendedor(
       nome: 'jhonny',
@@ -163,19 +165,45 @@ main() {
   print('O total vendido pelo revendedor é: $valorTotalProduto');
   pularLinha();
 
-  //teste método cliente falar
+  /* ------------------------------------------ */
+  /* Testes da classe Brinde */
+
+  Brinde brindeA = Brinde(
+      nome: 'Lápis Batom Instalip Vinho',
+      pontosNecessarios: 1,
+      qtdEmEstoque: 20);
+
+  Brinde brindeB = Brinde(
+      nome: 'Creme Hidratante Para as Mãos Cuide-se Bem Beijinho',
+      pontosNecessarios: 1,
+      qtdEmEstoque: 15);
+
+  brindeA.consultarPontosNecessarios();
+  brindeA.realizarTroca();
+
+  List<Brinde> brindes = [
+    Brinde(
+        nome: "Colônia Floratta Red 75ml",
+        pontosNecessarios: 2,
+        qtdEmEstoque: 5),
+    Brinde(
+        nome: "Lápis Batom Instalip Vinho",
+        pontosNecessarios: 2,
+        qtdEmEstoque: 8),
+    Brinde(nome: "212", pontosNecessarios: 500, qtdEmEstoque: 10)
+  ];
+
+  pularLinha();
+
+  /* ------------------------------------------ */
+  /* Testes da classe Cliente */
+
   Cliente clienteA = Cliente(
     nome: 'João',
     cpf: '12345678900',
     dataDeNascimento: DateTime(1980, 5, 15),
     genero: Genero.Masculino,
   );
-
-  clienteA.falar("Quero comprar um produto.");
-  /* ------------------------------------------ */
-
-  /* ------------------------------------------ */
-  /* Testes da classe Cliente */
 
   Cliente clienteComDinheiro = Cliente(
       nome: 'Fran',
@@ -184,19 +212,12 @@ main() {
       dinheiro: 10,
       genero: Genero.Feminino);
 
-  clienteComDinheiro.adicionarDinheiro(22.0);
-  clienteComDinheiro.adicionarDinheiro(null);
-
   Cliente clienteSemDinheiro = Cliente(
       nome: 'Kamila',
       cpf: '1234578900',
       dataDeNascimento: DateTime.parse('1997-11-15'),
       genero: Genero.Feminino);
 
-  clienteSemDinheiro.adicionarDinheiro(10.0);
-
-  //Teste do método comprarProduto
-  //cliente com dinheiro
   Cliente clienteX = Cliente(
       nome: 'Ana',
       cpf: '20202929',
@@ -204,44 +225,49 @@ main() {
       dinheiro: 330.70,
       genero: Genero.Feminino);
 
-  clienteX.comprarProduto(produtoA, revendedorA);
-  clienteX.consultarTotalPontos();
-  clienteX.comprarProduto(produtoB, revendedorC);
-  //teste método calcularTotalGasto
-  print(clienteX.calcularTotalGasto());
-  clienteX.calcularMediaValorProdutosComprados();
-
-//cliente sem dinheiro
   Cliente clienteY = Cliente(
       nome: 'João',
       cpf: '20202929',
       dataDeNascimento: DateTime.parse('2005-10-03'),
       dinheiro: 2.50,
       genero: Genero.Masculino);
+
+  //teste método cliente falar
+  clienteA.falar("Quero comprar um produto.");
+
+  //teste do método adicionarDinheiro
+  clienteComDinheiro.adicionarDinheiro(22.0);
+  clienteComDinheiro.adicionarDinheiro(null);
+  clienteSemDinheiro.adicionarDinheiro(10.0);
+
+  //Teste do método comprarProduto
+  clienteX.comprarProduto(produtoA, revendedorA);
   clienteY.comprarProduto(produtoB, revendedorA);
-  
+  clienteX.comprarProduto(produtoB, revendedorC);
+
+  //teste método calcularTotalGasto
+  print(clienteX.calcularTotalGasto());
+
+  //teste do método calcularMediaValorProdutosComprados
+  clienteX.calcularMediaValorProdutosComprados();
+
+  //teste do método ordenarProdutosComprados
+  clienteX.ordenarProdutosComprados();
+
+  //teste do método consultarTotalPontos
+  clienteX.consultarTotalPontos();
+
+  //teste do método verResumo
+  clienteX.verResumo();
+
+  //teste do método verProdutosComprados
+  clienteX.verProdutosComprados();
+
   // Teste de Método Trocar Pontos Por Brinde
-  clienteY.trocarPontosPorBrinde(brindeA);
-  
+  clienteX.trocarPontosPorBrinde(brindeA);
+  clienteX.trocarPontosPorBrinde(brindeB);
+
   //teste método verBrindes
-  clienteY.verBrindes();
+  clienteX.verBrindes();
 
-  /* ------------------------------------------ */
-  /* Testes da classe Brinde */
-
-  Brinde brindeA = Brinde(
-      nome: 'Lápis Batom Instalip Vinho',
-      pontosNecessarios: 50,
-      qtdEmEstoque: 20);
-
-  brindeA.consultarPontosNecessarios();
-  brindeA.realizarTroca();
-
-  List<Brinde> brindes = [
-    Brinde(nome: "Colônia Floratta Red 75ml", pontosNecessarios: 100),
-    Brinde(nome: "Lápis Batom Instalip Vinho", pontosNecessarios: 200),
-    Brinde(nome: "212", pontosNecessarios: 500)
-  ];
-
-  Brinde.ordenarBrindes(brindes);
 }

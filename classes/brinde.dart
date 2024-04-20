@@ -21,4 +21,5 @@ class Brinde {
       throw Exception('No momento não possuímos o produto ${this.nome} em estoque.');
     }
   }
+
 }
