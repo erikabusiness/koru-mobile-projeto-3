@@ -1,14 +1,12 @@
 class Brinde {
   int qtdEmEstoque;
-
-  Brinde({required this.qtdEmEstoque});
-
   final int pontosNecessarios;
   final String nome;
 
   Brinde({
     required this.pontosNecessarios,
     required this.nome,
+    required this.qtdEmEstoque
   });
 
   void consultarPontosNecessarios() {
