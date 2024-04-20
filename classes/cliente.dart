@@ -105,7 +105,6 @@ class Cliente extends Pessoa {
   }
 
   void verBrindes() {
-    ordenarBrindes();
     print('Brindes recebidos por $nome:');
     brindes.forEach((brinde) {
       print('$brinde');
