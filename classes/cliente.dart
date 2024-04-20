@@ -87,10 +87,10 @@ class Cliente extends Pessoa {
     print('Olá $nome, você possui $pontos $_singularOuPlural!');
   }
 
-  void verResumo(double valorTotalGasto, double valorMedioGasto) {
-    print(
-        'O total gasto por ${nome} foi ${fixarDuasCasasDecimais(calcularTotalGasto())} reais e a média de valor dos produtos comprados é ${fixarDuasCasasDecimais(calcularMediaValorProdutosComprados())} reais.');
-  }
+  void verResumo(double Function() calcularTotalGasto, double Function() calcularMediaValorProdutosComprados) {
+  print(
+      'O total gasto por ${nome} foi ${fixarDuasCasasDecimais(calcularTotalGasto())} reais e a média de valor dos produtos comprados é ${fixarDuasCasasDecimais(calcularMediaValorProdutosComprados())} reais.');
+}
 
   void verProdutosComprados() {
     if (produtosComprados.isEmpty) {
