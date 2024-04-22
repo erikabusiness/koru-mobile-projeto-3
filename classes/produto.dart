@@ -4,7 +4,6 @@ class Produto {
   int qtdEmEstoque = 0;
   int qtdVendida = 0;
 
-  // Construtor
   Produto({
     required this.nome,
     required this.valor,
