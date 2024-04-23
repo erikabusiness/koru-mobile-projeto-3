@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import '../utils.dart';
+import 'brinde.dart';
 import 'cliente.dart';
 import 'enums.dart';
 import 'produto.dart';
@@ -19,9 +20,9 @@ class Menu {
   }
 
   static Cliente criarNovoCliente() {
-    late String nomeNovoCliente;
-    late String cpfNovoCliente;
-    late DateTime dataNascimentoNovoCliente;
+    String nomeNovoCliente;
+    String cpfNovoCliente;
+    DateTime dataNascimentoNovoCliente;
     late Genero generoNovoCliente;
 
     do {
@@ -69,6 +70,30 @@ class Menu {
     );
   }
 
+  static int obterOpcaoMenuPrincipal() {
+    int? entrada;
+    do {
+      entrada = int.tryParse(prompt(
+          "[1] - Comprar Produtos\n[2] - Consultar produtos comprados\n[3] - Resumo de compras\n[4] - Adicionar Saldo\n[5] - Consultar Saldo\n[6] - Troca de Pontos\n[7] - Consultar Pontos\n[8] - Consultar brindes recebidos\n[0] - Sair\n\n"
+              "Seja bem-vindo(a) ao nosso sistema de atendimento, escolha uma opção: "));
+      if (entrada == null || entrada < 0 || entrada > 8) {
+        stdout.write("Opção inválida. Por favor, selecione novamente.\n");
+      }
+    } while (entrada == null || entrada < 0 || entrada > 8);
+    return entrada;
+  }
+
+  static int obterIndiceValido(List<dynamic> lista, String tipo) {
+    int? entrada;
+    do {
+      entrada = int.tryParse(prompt("\nSelecione o número do $tipo: "));
+      if (entrada == null || entrada < 0 || entrada > lista.length) {
+        stdout.write("\nOpção inválida. Por favor, selecione novamente.\n");
+      }
+    } while (entrada == null || entrada < 0 || entrada > lista.length);
+    return entrada;
+  }
+
   static void menuVenda(List<Revendedor> revendedores, List<Produto> produtos, Cliente cliente) {
     pularLinha();
     stdout.write("Olá ${cliente.nome}, bem-vindo(a) à central de compras. Abaixo estão nossos revendedores disponíveis para lhe atender no momento: \n");
@@ -77,35 +102,19 @@ class Menu {
       stdout.write("[${index + 1}] - ${revendedor.nome}\n");
     });
 
-    int? indiceSelecionado;
-    do {
-      int? entrada = int.tryParse(prompt("Selecione o número do revendedor para lhe atender: "));
-      if (entrada != null && entrada >= 1 && entrada <= revendedores.length) {
-        indiceSelecionado = entrada - 1;
-      } else {
-        stdout.write("Opção inválida. Por favor, selecione novamente.\n");
-      }
-    } while (indiceSelecionado == null);
+    int indiceSelecionado = obterIndiceValido(revendedores, "revendedor") - 1;
 
     Revendedor revendedorSelecionado = revendedores[indiceSelecionado];
-    stdout.write("Você selecionou ${revendedorSelecionado.nome} como seu revendedor.\nNosso catálogo de produtos disponíveis será exibido abaixo: \n");
+    stdout.write("\nVocê selecionou ${revendedorSelecionado.nome} como seu revendedor.\nNosso catálogo de produtos disponíveis será exibido abaixo: \n");
 
     produtos.asMap().forEach((index, produto) {
       stdout.write("[${index + 1}] - ${produto.nome} - R\$${produto.valor}\n");
     });
 
-    int? indiceProdutoSelecionado;
-    do {
-      int? entrada = int.tryParse(prompt("Selecione o número do produto que deseja comprar: "));
-      if (entrada != null && entrada >= 1 && entrada <= produtos.length) {
-        indiceProdutoSelecionado = entrada - 1;
-      } else {
-        stdout.write("Opção inválida. Por favor, selecione novamente.\n");
-      }
-    } while (indiceProdutoSelecionado == null);
+    int indiceProdutoSelecionado = obterIndiceValido(produtos, "produto") - 1;
 
     Produto produtoSelecionado = produtos[indiceProdutoSelecionado];
-    stdout.write("Você selecionou o produto: ${produtoSelecionado.nome} - R\$${produtoSelecionado.valor}\n");
+    stdout.write("\nVocê selecionou o produto: ${produtoSelecionado.nome} - R\$${produtoSelecionado.valor}\n");
 
     bool confirmacaoProduto = confirmar("Deseja confirmar a compra deste produto?");
     if (confirmacaoProduto) {
@@ -136,41 +145,70 @@ class Menu {
     } while (!confirmado);
 
     cliente.adicionarDinheiro(recarga);
-    stdout.write("Saldo adicionado com sucesso! Novo saldo: R\$${fixarDuasCasasDecimais(cliente.dinheiro)}\n");
   }
 
-  static void menuPrincipal(List<Revendedor> revendedores, List<Produto> produtos) {
+  static void menuBrindes(List<Brinde> brindes, Cliente cliente) {
+    pularLinha();
+
+    brindes.asMap().forEach((index, brinde) {
+      stdout.write("[${index + 1}] - ${brinde.nome} - Pontos necessários - ${brinde.pontosNecessarios}\n");
+    });
+
+    int indiceBrindeSelecionado = obterIndiceValido(brindes, "brinde") - 1;
+
+    Brinde brindeSelecionado = brindes[indiceBrindeSelecionado];
+    stdout.write("Você selecionou o produto: ${brindeSelecionado.nome} - Pontos Necessários: ${brindeSelecionado.pontosNecessarios}\n");
+
+    bool confirmacaoBrinde = confirmar("Deseja confirmar a troca por este brinde?");
+    if (confirmacaoBrinde) {
+      if (brindeSelecionado.qtdEmEstoque > 0) {
+        cliente.trocarPontosPorBrinde(brindeSelecionado);
+      } else {
+        stdout.write("Desculpe, o brinde selecionado está fora de estoque.\n");
+      }
+    } else {
+      stdout.write("Troca cancelada.\n");
+    }
+  }
+
+  static void menuPrincipal(List<Revendedor> revendedores, List<Produto> produtos, List<Brinde> brindes) {
+    pularLinha();
+
     Cliente cliente = criarNovoCliente();
     bool sair = false;
 
     do {
-      int? entrada = int.tryParse(prompt("[1] - Comprar Produtos\n[2] - Adicionar Saldo\n[3] - Consultar Saldo\n[4] - Troca de Pontos\n[5] - Consultar Pontos\n[0] - Sair\n\n"
-          "Seja bem-vindo(a) ${cliente.nome}, ao nosso sistema de atendimento, escolha uma de nossas opções de atendimento: "));
-
-      switch(entrada) {
+      switch (obterOpcaoMenuPrincipal()) {
         case 1:
           menuVenda(revendedores, produtos, cliente);
           break;
         case 2:
-          menuSaldo(cliente);
+          stdout.write("Você já comprou os seguintes produtos:\n");
+          cliente.verProdutosComprados();
           break;
         case 3:
-        stdout.write("O Seu saldo atual é de: ${fixarDuasCasasDecimais(cliente.dinheiro)}\n");
+          cliente.verResumo();
           break;
         case 4:
-        //Chamar Menu de pontos
+          menuSaldo(cliente);
           break;
         case 5:
-        //Chamar variavel de pontos de cliente
+          stdout.write("O Seu saldo atual é de: ${fixarDuasCasasDecimais(cliente.dinheiro)}\n");
+          break;
+        case 6:
+          menuBrindes(brindes, cliente);
+          break;
+        case 7:
+          stdout.write("Você possui ${cliente.pontos} pontos para serem resgatados!\n");
+          break;
+        case 8:
+          stdout.write("Você já recebeu os seguintes brindes:\n");
+          cliente.verBrindes();
           break;
         case 0:
           sair = true;
           break;
-        default:
-          stdout.write("Opção [$entrada] invalida!");
-          continue;
       }
     } while (!sair);
   }
 }
-
