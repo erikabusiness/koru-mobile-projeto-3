@@ -6,8 +6,9 @@ import 'brinde.dart';
 
 class Cliente extends Pessoa {
   double dinheiro;
-
+  int pontos = 0;
   List<Produto> produtosComprados = [];
+  List<Brinde> brindes = [];
 
   Cliente({
     required super.nome,
@@ -17,20 +18,18 @@ class Cliente extends Pessoa {
     this.dinheiro = 0.0,
   });
 
-  //método falar
   @override
   void falar(String fala) {
-    print("Cliente $nome diz: $fala");
+    print('Cliente $nome diz: $fala');
   }
 
-  //metodo comprarProduto (retorno: void)
   void comprarProduto(Produto produto, Revendedor revendedor) {
-    if (dinheiro >= produto.valor) {
+    if (this.dinheiro >= produto.valor) {
       try {
         revendedor.venderProduto(produto);
-        dinheiro -= produto.valor;
-        produtosComprados.add(produto);
-        pontos++;
+        this.dinheiro -= produto.valor;
+        this.produtosComprados.add(produto);
+        this.pontos++;
       } catch (e) {
         print(e.toString());
       }
@@ -42,20 +41,20 @@ class Cliente extends Pessoa {
 
   void adicionarDinheiro(double? valor) {
     if (valor != null) {
-      dinheiro += valor;
+      this.dinheiro += valor;
       print(
-          "$nome adicionou $valor à sua carteira. Agora você tem $dinheiro em dinheiro.");
+          '$nome adicionou ${fixarDuasCasasDecimais(valor)} à sua carteira. Agora você tem ${fixarDuasCasasDecimais(this.dinheiro)} em dinheiro.');
     } else {
-      print("Nenhum valor adicionado à carteira");
+      print('Nenhum valor adicionado à carteira');
     }
   }
 
   double calcularTotalGasto() {
     double totalGasto = 0.0;
-    if (produtosComprados.isEmpty) {
-      print("Cliente $nome não possui produtos comprados");
+    if (this.produtosComprados.isEmpty) {
+      print('Cliente $nome não possui produtos comprados');
     } else {
-      produtosComprados.forEach((produto) {
+      this.produtosComprados.forEach((produto) {
         totalGasto += produto.valor;
       });
     }
@@ -63,56 +62,71 @@ class Cliente extends Pessoa {
   }
 
   double calcularMediaValorProdutosComprados() {
-    if (produtosComprados.isEmpty) {
+    if (this.produtosComprados.isEmpty) {
       return 0;
     } else {
-      List<Produto> produtosComprados = this.produtosComprados;
-      int numeroDeProdutos = produtosComprados.length;
+      int numeroDeProdutos = this.produtosComprados.length;
       double valorMedio;
 
       valorMedio = calcularTotalGasto() / numeroDeProdutos;
 
-     return valorMedio;
+      return valorMedio;
     }
   }
 
   void ordenarProdutosComprados() {
-    produtosComprados.sort((a, b) => a.nome.compareTo(b.nome));
+    this.produtosComprados.sort((a, b) => a.nome.compareTo(b.nome));
   }
 
   void consultarTotalPontos() {
-    String _singularOuPlural = pontos == 1 ? "ponto" : "pontos";
-    print("Olá $nome, você possui $pontos $_singularOuPlural!");
-  }
-  void verResumo(double valorTotalGasto, double valorMedioGasto) {
-    print(
-        "O total gasto por ${nome} foi ${fixarDuasCasasDecimais(calcularTotalGasto())} reais e a média de valor dos produtos comprados é ${fixarDuasCasasDecimais(calcularMediaValorProdutosComprados())} reais.");
+    String _singularOuPlural = this.pontos == 1 ? 'ponto' : 'pontos';
+    print('Olá $nome, você possui ${this.pontos} $_singularOuPlural!');
   }
 
-
- void verBrindes() {
-    ordenarBrindes();
-    print('Brindes recebidos por $nome:');
-    brindes.forEach((brinde) {
-      print('$brinde');
-    });
-  }
-
-  void trocarPontosPorBrinde(Brinde brinde){
-    if(pontos >= brinde.pontosNecessarios){
-      try{
-        brinde.realizarTroca();
-        this.pontos -= brinde.pontosNecessarios;
-        brindes.add(brinde);
-      }catch(e){
-        print(e.toString());
-      }
-    }else{
-      print('$nome não possui pontos suficientes para trocar pelo brinde ${brinde.nome}.');
+  void verProdutosComprados() {
+    if (produtosComprados.isEmpty) {
+      print('Cliente $nome não possui produtos comprados');
+    } else {
+      ordenarProdutosComprados();
+      this.produtosComprados.forEach((produto) {
+        print('${produto.nome}');
+      });
     }
   }
 
+  void ordenarBrindes() {
+    this.brindes.sort((a, b) => a.nome.compareTo(b.nome));
+  }
+
+  void verBrindes() {
+    ordenarBrindes();
+    if (this.brindes.isEmpty) {
+      print('$nome ainda não recebeu nenhum brinde');
+    } else {
+      print('Brindes recebidos por $nome:');
+      this.brindes.forEach((brinde) {
+        print('${brinde.nome}');
+      });
+    }
+  }
+
+  void trocarPontosPorBrinde(Brinde brinde) {
+    if (this.pontos >= brinde.pontosNecessarios) {
+      try {
+        brinde.realizarTroca();
+        this.pontos -= brinde.pontosNecessarios;
+        this.brindes.add(brinde);
+      } catch (e) {
+        print(e.toString());
+      }
+    } else {
+      print(
+          '$nome não possui pontos suficientes para trocar pelo brinde ${brinde.nome}.');
+    }
+  }
+
+  void verResumo() {
+    print(
+        'O total gasto por ${nome} foi ${fixarDuasCasasDecimais(this.calcularTotalGasto())} reais e a média de valor dos produtos comprados é ${fixarDuasCasasDecimais(this.calcularMediaValorProdutosComprados())} reais.');
+  }
 }
-
-
-

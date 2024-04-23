@@ -3,7 +3,7 @@ void pularLinha() {
 }
 
 String fixarDuasCasasDecimais(double valor) {
-  return valor.toStringAsFixed(2);
+  return 'R\$ ${valor.toStringAsFixed(2)} reais';
 }
 
 String formatarData(DateTime data) {
