@@ -91,7 +91,7 @@ class Revendedor extends Pessoa {
   }
 
   void verResumo(){
-    print('O total vendido por João foi ${fixarDuasCasasDecimais(this._calcularTotalVendido())}.');
+    print('O total vendido por ${this.nome} foi ${fixarDuasCasasDecimais(this._calcularTotalVendido())}.');
     print('A média aritmética de valor dos produtos vendidos é ${fixarDuasCasasDecimais(this._calcularMediaProdutosVendidos())}.');
     print('O lucro recebido foi de ${fixarDuasCasasDecimais(this._calcularLucro())}.');
   }

@@ -19,26 +19,77 @@ class Menu {
     return resposta.toLowerCase() == 's';
   }
 
+  static bool validarNome(String nome) {
+    RegExp regex = RegExp(r'^[a-zA-Z]+$');
+    return regex.hasMatch(nome);
+  }
+
+  static bool validarCPF(String cpf) {
+    RegExp regex = RegExp(r'^\d{11}$');
+    return regex.hasMatch(cpf);
+  }
+
+  static bool validarDataNascimento(String diaStr, String mesStr, String anoStr) {
+    if (diaStr.length != 2 || mesStr.length != 2 || anoStr.length != 4) {
+      return false;
+    }
+    int dia, mes, ano;
+    try {
+      dia = int.parse(diaStr);
+      mes = int.parse(mesStr);
+      ano = int.parse(anoStr);
+    } catch (e) {
+      return false;
+    }
+
+    if (dia < 1 || dia > 31 || mes < 1 || mes > 12 || ano < 1000 || ano > 9999) {
+      return false;
+    }
+    return true;
+  }
+
+
   static Cliente criarNovoCliente() {
     String nomeNovoCliente;
     String cpfNovoCliente;
-    DateTime dataNascimentoNovoCliente;
+    DateTime dataNascimentoNovoCliente = DateTime.now();
     late Genero generoNovoCliente;
 
+    bool nomeCorreto = false;
     do {
       nomeNovoCliente = prompt("Olá, por favor digite seu nome: ");
-    } while (!confirmar("Seu nome [$nomeNovoCliente] está correto?"));
+      if (!validarNome(nomeNovoCliente)) {
+        stdout.write("Formato inválido. Por favor, digite apenas letras.\n");
+      } else {
+        nomeCorreto = confirmar("Seu nome [$nomeNovoCliente] está correto?");
+      }
+    } while (!nomeCorreto);
 
+    bool cpfCorreto = false;
     do {
-      cpfNovoCliente = prompt("$nomeNovoCliente, Digite seu CPF: ");
-    } while (!confirmar("Seu CPF [$cpfNovoCliente] está correto?"));
+      cpfNovoCliente = prompt("Digite seu CPF (apenas números, 11 dígitos): ");
+      if (!validarCPF(cpfNovoCliente)) {
+        stdout.write("CPF inválido. Por favor, digite exatamente 11 dígitos numéricos.\n");
+      } else {
+        cpfCorreto = confirmar("Seu CPF [$cpfNovoCliente] está correto?");
+      }
+    } while (!cpfCorreto);
 
+
+    String dia, mes, ano;
+    bool dataNascimentoCorreta = false;
     do {
-      int dia = int.parse(prompt("$nomeNovoCliente, digite seu dia de nascimento: "));
-      int mes = int.parse(prompt("$nomeNovoCliente, agora digite seu mês de nascimento: "));
-      int ano = int.parse(prompt("$nomeNovoCliente, por último digite seu ano de nascimento: "));
-      dataNascimentoNovoCliente = DateTime(ano, mes, dia);
-    } while (!confirmar("Sua data de nascimento [${formatarData(dataNascimentoNovoCliente)}] está correta?"));
+      dia = prompt("Digite o dia de nascimento (dd): ");
+      mes = prompt("Digite o mês de nascimento (mm): ");
+      ano = prompt("Digite o ano de nascimento (yyyy): ");
+      if (!validarDataNascimento(dia, mes, ano)) {
+        stdout.write("Data de nascimento inválida. Por favor, digite novamente.\n");
+      } else {
+        dataNascimentoNovoCliente = DateTime.parse("$ano-$mes-$dia");
+        dataNascimentoCorreta = confirmar("Sua data de nascimento [${formatarData(dataNascimentoNovoCliente)}] está correta?");
+      }
+    } while (!dataNascimentoCorreta);
+
 
     bool generoConfirmado = false;
     do {
@@ -185,30 +236,44 @@ class Menu {
         case 2:
           stdout.write("Você já comprou os seguintes produtos:\n");
           cliente.verProdutosComprados();
+          pularLinha();
           break;
         case 3:
           cliente.verResumo();
+          pularLinha();
           break;
         case 4:
           menuSaldo(cliente);
           break;
         case 5:
           stdout.write("O Seu saldo atual é de: ${fixarDuasCasasDecimais(cliente.dinheiro)}\n");
+          pularLinha();
           break;
         case 6:
           menuBrindes(brindes, cliente);
           break;
         case 7:
           stdout.write("Você possui ${cliente.pontos} pontos para serem resgatados!\n");
+          pularLinha();
           break;
         case 8:
           stdout.write("Você já recebeu os seguintes brindes:\n");
           cliente.verBrindes();
+          pularLinha();
           break;
         case 0:
           sair = true;
           break;
       }
     } while (!sair);
+
+    stdout.write("Relatório de vendas!!\n");
+
+    revendedores.forEach((revendedor) {
+      stdout.write("${revendedor.nome} - ${revendedor.matricula}\n");
+      revendedor.verResumo();
+      pularLinha();
+    });
+
   }
 }
