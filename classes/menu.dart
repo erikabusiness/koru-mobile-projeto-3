@@ -48,6 +48,7 @@ class Menu {
     return true;
   }
 
+
   static Cliente criarNovoCliente() {
     String nomeNovoCliente;
     String cpfNovoCliente;
@@ -235,31 +236,91 @@ class Menu {
         case 2:
           stdout.write("Você já comprou os seguintes produtos:\n");
           cliente.verProdutosComprados();
+          pularLinha();
           break;
         case 3:
           cliente.verResumo();
+          pularLinha();
           break;
         case 4:
           menuSaldo(cliente);
           break;
         case 5:
           stdout.write("O Seu saldo atual é de: ${fixarDuasCasasDecimais(cliente.dinheiro)}\n");
+          pularLinha();
           break;
         case 6:
           menuBrindes(brindes, cliente);
           break;
         case 7:
           stdout.write("Você possui ${cliente.pontos} pontos para serem resgatados!\n");
+          pularLinha();
           break;
         case 8:
           stdout.write("Você já recebeu os seguintes brindes:\n");
           cliente.verBrindes();
+          pularLinha();
           break;
         case 0:
           sair = true;
           break;
       }
     } while (!sair);
+
+    stdout.write("Relatório de vendas!!\n");
+
+    revendedores.forEach((revendedor) {
+      stdout.write("${revendedor.nome} - ${revendedor.matricula}\n");
+      revendedor.verResumo();
+      pularLinha();
+    });
+
   }
 }
 
+void main() {
+
+  List<Revendedor> revendedores = [
+    Revendedor(
+        nome: 'Jhonny',
+        cpf: '123456',
+        dataDeNascimento: DateTime.parse('1991-12-21'),
+        matricula: '123456789',
+        genero: Genero.Masculino
+    ),
+    Revendedor(
+        nome: 'Marcos',
+        cpf: '1234564',
+        dataDeNascimento: DateTime.parse('1991-12-21'),
+        matricula: '97876474332',
+        genero: Genero.Masculino
+    )
+  ];
+
+  List<Produto> produtos = [
+    Produto(
+        nome: "Colônia Floratta Red 75ml",
+        valor: 75.90,
+        qtdEmEstoque: 10
+    ),
+    Produto(
+        nome: "Colônia Floratta Red 175ml",
+        valor: 275.90,
+        qtdEmEstoque: 10
+    ),
+  ];
+
+  List<Brinde> brindes = [
+    Brinde(
+        nome: "Colônia Floratta Red 75ml",
+        pontosNecessarios: 2,
+        qtdEmEstoque: 0),
+    Brinde(
+        nome: "Lápis Batom Instalip Vinho",
+        pontosNecessarios: 2,
+        qtdEmEstoque: 8),
+    Brinde(nome: "212", pontosNecessarios: 500, qtdEmEstoque: 10)
+  ];
+
+  Menu.menuPrincipal(revendedores, produtos, brindes);
+}
