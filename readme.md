@@ -1,96 +1,65 @@
-# Desafio Desenvolve Boticário - Dart - Módulo 3
+# Sistema de automatização para compra e venda - O Boticário
 
-Neste repositório, você encontrará um um projeto em Dart contendo as classes `Produto` e `Pessoa` referente ao módulo 03. Este desafio é uma atividade proposta durante o programa de Desenvolvimento Boticário 2024.
+> Este repositório faz parte do Projeto de Aprendizagem - Módulo 3. A atividade foi realizada no curso de Desenvolvimento Mobile, durante o Programa Desenvolve 2024, do Grupo Boticário em parceria com a Escola Korú.
 
-## Classes
+## Tabela de conteúdo
 
-### Produto
+* [Objetivo do projeto](#objetivo-do-projeto)
+* [Estrutura do projeto](#estrutura-do-projeto)
+* [Features](#features)
+* [Instalação](#instalação)
+* [Links](#links)
+* [Squad DartVaders](#squad-dartvaders)
 
-#### Atributos:
 
-- `nome` (String): Nome do produto.
-- `valor` (double): Preço do produto.
-- `qtdEmEstoque` (int): Quantidade do produto em estoque.
-- `qtdVendida` (int): Quantidade do produto já vendida.
+<p align="center">
+<img src="https://github.com/erikabusiness/koru-mobile-projeto-3/assets/107557946/7656dc1c-51e2-4fad-a6f6-fc38b9afada6" width="90%">
+</p>
 
-#### Métodos:
+## Objetivo do projeto
+A empresa O Boticário deseja automatizar o controle de compra e venda de seus produtos. Para trazer transparência, o sistema deverá registrar e fornecer os dados das compras e vendas realizadas, bem como valores gastos e ganhos. Seu time de tecnologia foi escalado para criar esse sistema que será montado utilizando lógica de programação e pilares da Programação Orientada a Objetos (POO).
 
-- `realizarVenda()`: Realiza uma venda do produto.
-- `verReceitaGerada()`: Calcula e retorna a receita gerada pelo produto.
-
-### Pessoa
-
-#### Atributos:
-
-- `nome` (String): Nome da pessoa.
-- `cpf` (String): CPF da pessoa.
-- `dataDeNascimento` (DateTime): Data de nascimento da pessoa.
-- `idade` (int): Idade da pessoa.
-
-#### Métodos:
-
-- `falar(String fala)`: Imprime uma fala da pessoa.
-- `calcularIdade()`: Calcula a idade da pessoa com base na data atual.
-- `maioridade()`: Verifica se a pessoa é maior de idade.
-
-### Cliente
-
-#### Atributos:
-- `nome` (String): Nome do cliente.
-- `cpf` (String): CPF do cliente.
-- `dataDeNascimento` (DateTime): Data de nascimento do cliente.
-- `idade` (int): Idade do cliente.
-- `dinheiro` (double, opcional): Quantia em dinheiro que o cliente possui.
-- `produtosComprados` (Array de Produtos): Produtos comprados pelo cliente.
-
-#### Métodos:
-- `falar(String fala)`: Imprime uma fala do cliente.
-- `calcularIdade()`: Calcula a idade do cliente com base na data atual.
-- `maioridade()`: Verifica se o cliente é maior de idade.
-- `adicionarDinheiro(double valor)`: Adiciona dinheiro à carteira do cliente.
-- `comprarProduto(Produto produto, Revendedor revendedor)`: Realiza a compra de um produto com um revendedor.
-
-### Revendedor
-
-#### Atributos:
-
-- `nome` (String): Nome do revendedor.
-- `cpf` (String): CPF do revendedor.
-- `dataDeNascimento` (DateTime): Data de nascimento do revendedor.
-- `idade` (int): Idade do revendedor.
-- `genero` (Genero): Gênero do revendedor.
-- `matricula` (String): Matrícula do revendedor.
-- `produtosVendidos` (Array de Produtos): Produtos vendidos pelo revendedor.
-- `porcentagemLucro` (double): Porcentagem de lucro em cima de cada produto vendido pelo revendedor.
-
-#### Métodos:
-- `falar(String fala)`: Imprime uma fala do revendedor.
-- `calcularIdade()`: Calcula a idade do revendedor com base na data atual.
-- `maioridade()`: Verifica se o revendedor é maior de idade.
-- `venderProduto(Produto produto)`: Realiza a venda de um produto.
-
-## Estrutura do Projeto
-
-- `produto.dart`: Contém a implementação da classe Produto.
+## Estrutura do projeto
 - `pessoa.dart`: Contém a implementação da classe Pessoa.
 - `cliente.dart`: Contém a implementação da classe Cliente.
 - `revendedor.dart`: Contém a implementação da classe Revendedor.
+- `produto.dart`: Contém a implementação da classe Produto.
+- `brinde.dart`: Contém a implementação da classe Brinde.
+- `enums.dart`: Contém a implementação da classe Enum.
+- `menu.dart`: Contém a implementação do menu interativo.
 - `main.dart`: Arquivo principal para testar e executar o projeto.
 
-## Squad DartVaders :)
+## Features
+* Automatizar o processo de compra e venda para clientes e revendedores
+* Registrar e fornecer um resumo de compras e vendas
+* Adicionar e consultar saldo
+* Monitorar o humor
+#### **Extra:**
+* Consultar pontos do clube fidelidade e realizar troca por brindes
+* Criação do menu interativo
 
-| Adalto Mendes                                                        | Emerson Mendes                                                    | Erika Alves                                                         | Franciéllen Sousa                                                  | Jaqueline Dreyer                                                    | Jhonny Valente                                                       |
-| -------------------------------------------------------------------- | ----------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------ | ------------------------------------------------------------------- | -------------------------------------------------------------------- |
-| <img src="/assets/integrantes/adalto.png" height="100" width="100"> | <img src="/assets/integrantes/eme.png" height="100" width="100"> | <img src="/assets/integrantes/erika.png" height="100" width="100"> | <img src="/assets/integrantes/fran.png" height="100" width="100"> | <img src="/assets/integrantes/jaque.png" height="100" width="100"> | <img src="/assets/integrantes/jhonny.png" height="100" width="100"> |
+## Instalação
 
-| João Rebouças                                                          | Kamila Teófilo                                                     | Leidiane Silva                                                       |
-| ---------------------------------------------------------------------- | ------------------------------------------------------------------ | -------------------------------------------------------------------- |
-| <img src="/assets/integrantes/reboucas.png" height="100" width="100"> | <img src="/assets/integrantes/kami.png" height="100" width="100"> | <img src="/assets/integrantes/leidi.jpeg" height="100" width="100"> |
+Primeiramente você precisa ter instalado o [Flutter SDK](https://docs.flutter.dev/get-started/install) e, em seguida, para realizar o clone do projeto via HTTPS, execute o comando:
 
-## Instruções
+```git clone https://github.com/erikabusiness/koru-mobile-projeto-3.git```
 
-1. Faça o fork deste projeto para o seu Github.
-2. Clone o repositório forkeado para sua máquina local.
-3. Utilize o arquivo `main.dart` para testar e executar seu projeto como o comando `dart run main.dart` no terminal do vscode.
+Se você tiver uma chave SSH registrada em sua conta do GitHub, clone o projeto usando este comando:
+
+```git clone git@github.com:erikabusiness/koru-mobile-projeto-3.git```
+
+Execute o seguinte comando para iniciar a aplicação em um ambiente de desenvolvimento:
+
+```
+// Inicie a aplicação
+dart run main.dart
+```
+
+## Links
+* [Apresentação disponível no Figma](https://www.figma.com/file/hCFeUylbCY93vMavQ3DpcO/DartVaders---M%C3%B3dulo-3?type=design&node-id=0%3A1&mode=design&t=KD20FVuroJ1aVGR6-1)
 
 
+## Squad DartVaders
+| Emerson Mendes | Erika Alves | Franciéllen Sousa | Jaqueline Dreyer | Jhonny Valente | João Rebouças | Kamila Teófilo |  Leidiane Silva | 
+|  :---:  |  :---:  |  :---:  |  :---:  |  :---:  |  :---:  |  :---:  |  :---:  |
+|<img src="./assets/integrantes/eme.png" height="80" width="80">|<img src="./assets/integrantes/erika.png" height="80" width="80">|<img src="./assets/integrantes/fran.png" height="80" width="80">|<img src="./assets/integrantes/jaque.png" height="80" width="80">| <img src="./assets/integrantes/jhonny.png" height="80" width="80">|<img src="./assets/integrantes/reboucas.png" height="80" width="80">|<img src="./assets/integrantes/kami.png" height="80" width="80">|<img src="./assets/integrantes/leidi.jpeg" height="80" width="80">|
