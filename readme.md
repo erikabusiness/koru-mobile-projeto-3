@@ -41,6 +41,15 @@ A empresa O Boticário deseja automatizar o controle de compra e venda de seus p
 * Consultar pontos do clube fidelidade e realizar troca por brindes
 * Criação do menu interativo
 
+## Links
+* [Apresentação disponível no Figma](https://www.figma.com/file/hCFeUylbCY93vMavQ3DpcO/DartVaders---M%C3%B3dulo-3?type=design&node-id=0%3A1&mode=design&t=KD20FVuroJ1aVGR6-1)
+
+
+## Squad DartVaders
+| Emerson Mendes | Erika Alves | Franciéllen Sousa | Jaqueline Dreyer | Jhonny Valente | João Rebouças | Kamila Teófilo |  Leidiane Silva | 
+|  :---:  |  :---:  |  :---:  |  :---:  |  :---:  |  :---:  |  :---:  |  :---:  |
+|<img src="./assets/integrantes/eme.png" height="80" width="80">|<img src="./assets/integrantes/erika.png" height="80" width="80">|<img src="./assets/integrantes/fran.png" height="80" width="80">|<img src="./assets/integrantes/jaque.png" height="80" width="80">| <img src="./assets/integrantes/jhonny.png" height="80" width="80">|<img src="./assets/integrantes/reboucas.png" height="80" width="80">|<img src="./assets/integrantes/kami.png" height="80" width="80">|<img src="./assets/integrantes/leidi.jpeg" height="80" width="80">|
+
 ## Instalação
 
 Primeiramente você precisa ter instalado o [Flutter SDK](https://docs.flutter.dev/get-started/install) e, em seguida, para realizar o clone do projeto via HTTPS, execute o comando:
@@ -57,12 +66,3 @@ Execute o seguinte comando para iniciar a aplicação em um ambiente de desenvol
 // Inicie a aplicação
 dart run main.dart
 ```
-
-## Links
-* [Apresentação disponível no Figma](https://www.figma.com/file/hCFeUylbCY93vMavQ3DpcO/DartVaders---M%C3%B3dulo-3?type=design&node-id=0%3A1&mode=design&t=KD20FVuroJ1aVGR6-1)
-
-
-## Squad DartVaders
-| Emerson Mendes | Erika Alves | Franciéllen Sousa | Jaqueline Dreyer | Jhonny Valente | João Rebouças | Kamila Teófilo |  Leidiane Silva | 
-|  :---:  |  :---:  |  :---:  |  :---:  |  :---:  |  :---:  |  :---:  |  :---:  |
-|<img src="./assets/integrantes/eme.png" height="80" width="80">|<img src="./assets/integrantes/erika.png" height="80" width="80">|<img src="./assets/integrantes/fran.png" height="80" width="80">|<img src="./assets/integrantes/jaque.png" height="80" width="80">| <img src="./assets/integrantes/jhonny.png" height="80" width="80">|<img src="./assets/integrantes/reboucas.png" height="80" width="80">|<img src="./assets/integrantes/kami.png" height="80" width="80">|<img src="./assets/integrantes/leidi.jpeg" height="80" width="80">|
