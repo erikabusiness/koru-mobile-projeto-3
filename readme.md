@@ -13,14 +13,15 @@ Este repositório faz parte do Projeto de Aprendizagem - Módulo 3. A atividade 
 ## Tabela de conteúdo
 
 * [Objetivo do projeto](#objetivo-do-projeto)
+* [Tecnologias usadas](#objetivo-do-projeto)
 * [Estrutura do projeto](#estrutura-do-projeto)
 * [Features](#features)
-* [Instalação](#instalação)
 * [Links](#links)
 * [Squad DartVaders](#squad-dartvaders)
+* [Instalação](#instalação)
 
 ## Objetivo do projeto
-A empresa O Boticário deseja automatizar o controle de compra e venda de seus produtos. Para trazer transparência, o sistema deverá registrar e fornecer os dados das compras e vendas realizadas, bem como valores gastos e ganhos. Seu time de tecnologia foi escalado para criar esse sistema que será montado utilizando lógica de programação e pilares da Programação Orientada a Objetos (POO).
+Costruir um sistema para ajudar a empresa O Boticário a automatizar o controle de compra e venda de seus produtos trazendo transparência. O sistema que construimos registra e fornece os dados das compras e vendas realizadas, bem como valores gastos e ganhos.
 
 ## Estrutura do projeto
 - `pessoa.dart`: Contém a implementação da classe Pessoa.
@@ -33,13 +34,14 @@ A empresa O Boticário deseja automatizar o controle de compra e venda de seus p
 - `main.dart`: Arquivo principal para testar e executar o projeto.
 
 ## Features
-* Automatizar o processo de compra e venda para clientes e revendedores
-* Registrar e fornecer um resumo de compras e vendas
-* Adicionar e consultar saldo
-* Monitorar o humor
+* Automatiza o processo de compra e venda para clientes e revendedores
+* Registra e fornecer um resumo de compras e vendas
+* Adiciona e consulta o saldo
+* Monitora o humor
+* Validação dos dados inseridos em todas as etapas
 #### **Extra:**
-* Consultar pontos do clube fidelidade e realizar troca por brindes
-* Criação do menu interativo
+* Consulta aos pontos do clube fidelidade e realiza troca dos pontos por brindes
+* Menu interativo
 
 ## Links
 * [Apresentação disponível no Figma](https://www.figma.com/file/hCFeUylbCY93vMavQ3DpcO/DartVaders---M%C3%B3dulo-3?type=design&node-id=0%3A1&mode=design&t=KD20FVuroJ1aVGR6-1)
