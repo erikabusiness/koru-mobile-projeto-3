@@ -23,6 +23,9 @@ Este repositório faz parte do Projeto de Aprendizagem - Módulo 3. A atividade 
 ## Objetivo do projeto
 Costruir um sistema para ajudar a empresa O Boticário a automatizar o controle de compra e venda de seus produtos trazendo transparência. O sistema que construimos registra e fornece os dados das compras e vendas realizadas, bem como valores gastos e ganhos.
 
+## Tecnologias Usadas:
+[![My Skills](https://skillicons.dev/icons?i=dart,figma,)](https://skillicons.dev)
+
 ## Estrutura do projeto
 - `pessoa.dart`: Contém a implementação da classe Pessoa.
 - `cliente.dart`: Contém a implementação da classe Cliente.
@@ -42,6 +45,7 @@ Costruir um sistema para ajudar a empresa O Boticário a automatizar o controle 
 #### **Extra:**
 * Consulta aos pontos do clube fidelidade e realiza troca dos pontos por brindes
 * Menu interativo
+
 
 ## Links
 * [Apresentação disponível no Figma](https://www.figma.com/file/hCFeUylbCY93vMavQ3DpcO/DartVaders---M%C3%B3dulo-3?type=design&node-id=0%3A1&mode=design&t=KD20FVuroJ1aVGR6-1)
