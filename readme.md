@@ -1,6 +1,10 @@
 # Sistema de automatização para compra e venda - O Boticário
 
-> Este repositório faz parte do Projeto de Aprendizagem - Módulo 3. A atividade foi realizada no curso de Desenvolvimento Mobile, durante o Programa Desenvolve 2024, do Grupo Boticário em parceria com a Escola Korú.
+Este repositório faz parte do Projeto de Aprendizagem - Módulo 3. A atividade foi realizada no curso de Desenvolvimento Mobile, durante o Programa Desenvolve 2024, do Grupo Boticário em parceria com a Escola Korú.
+
+<p align="center">
+<img src="https://github.com/erikabusiness/koru-mobile-projeto-3/assets/layout/capa-modulo-3.png" width="100%">
+</p>
 
 ## Tabela de conteúdo
 
@@ -10,11 +14,6 @@
 * [Instalação](#instalação)
 * [Links](#links)
 * [Squad DartVaders](#squad-dartvaders)
-
-
-<p align="center">
-<img src="https://github.com/erikabusiness/koru-mobile-projeto-3/assets/107557946/7656dc1c-51e2-4fad-a6f6-fc38b9afada6" width="90%">
-</p>
 
 ## Objetivo do projeto
 A empresa O Boticário deseja automatizar o controle de compra e venda de seus produtos. Para trazer transparência, o sistema deverá registrar e fornecer os dados das compras e vendas realizadas, bem como valores gastos e ganhos. Seu time de tecnologia foi escalado para criar esse sistema que será montado utilizando lógica de programação e pilares da Programação Orientada a Objetos (POO).
