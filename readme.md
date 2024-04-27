@@ -46,7 +46,7 @@ A empresa O Boticário deseja automatizar o controle de compra e venda de seus p
 
 
 ## Squad DartVaders
-| Emerson Mendes | Erika Alves | Franciéllen Sousa | Jaqueline Dreyer | Jhonny Valente | João Rebouças | Kamila Teófilo |  Leidiane Silva | 
+| Emerson Mendes | Erika Alves Malaquias | Franciéllen Sousa | Jaqueline Dreyer | Jhonny Valente | João Rebouças | Kamila Teófilo |  Leidiane Silva | 
 |  :---:  |  :---:  |  :---:  |  :---:  |  :---:  |  :---:  |  :---:  |  :---:  |
 |<img src="./assets/integrantes/eme.png" height="80" width="80">|<img src="./assets/integrantes/erika.png" height="80" width="80">|<img src="./assets/integrantes/fran.png" height="80" width="80">|<img src="./assets/integrantes/jaque.png" height="80" width="80">| <img src="./assets/integrantes/jhonny.png" height="80" width="80">|<img src="./assets/integrantes/reboucas.png" height="80" width="80">|<img src="./assets/integrantes/kami.png" height="80" width="80">|<img src="./assets/integrantes/leidi.jpeg" height="80" width="80">|
 
