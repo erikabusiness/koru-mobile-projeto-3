@@ -22,7 +22,7 @@ Costruir um sistema para ajudar a empresa O Boticário a automatizar o controle 
 [![My Skills](https://skillicons.dev/icons?i=dart,figma)](https://skillicons.dev)
 
 ## Estrutura
-
+```
 koru-mobile-projeto-3/
 │
 ├── classes/
@@ -36,6 +36,7 @@ koru-mobile-projeto-3/
 ├── `main.dart`
 ├── `utils.dart`
 └── README.md
+```
 
 - classes/: Contém as classes do projeto.
 - `main.dart`: Arquivo principal do projeto, utilizado para testar e executar o código.
