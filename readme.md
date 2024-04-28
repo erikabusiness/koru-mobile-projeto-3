@@ -41,7 +41,7 @@ koru-mobile-projeto-3/
 - classes/: Contém as classes do projeto.
 - `main.dart`: Arquivo principal do projeto, utilizado para testar e executar o código.
 - `utils.dart`: Contém utilitários ou funções auxiliares utilizadas no projeto.
-README.md: Documentação do projeto e informações sobre sua utilização.
+- README.md: Documentação do projeto e informações sobre sua utilização.
 
 
 ## Features
