@@ -6,7 +6,7 @@
 <img src="https://github.com/erikabusiness/koru-mobile-projeto-3/blob/erika/docs/update-readme/assets/layout/mockup.gif" width="100%">
 </p>
 
-> [!TIP]
+> [!NOTE]
 > Este repositório faz parte do Projeto de Aprendizagem - Módulo 3. A atividade foi realizada no curso de Desenvolvimento Mobile, durante o Programa Desenvolve 2024, do Grupo Boticário em parceria com a Escola Korú.</span>
 
 ## Índice
